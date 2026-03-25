@@ -1,0 +1,327 @@
+<div id="m8-container">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="h4 mb-0 fw-bold" style="color:var(--secondary-color)">
+      <i class="bi bi-share text-primary me-2"></i>Social Media Engine
+    </h2>
+    <span class="badge bg-primary" id="m8-template-count">34 Templates</span>
+  </div>
+  <p class="text-muted small mb-3">Auto-personalised templates from your School Profile. One-tap copy & share.</p>
+
+  <!-- Tab Nav -->
+  <ul class="nav nav-pills nav-fill mb-3 gap-1" id="m8Tabs" role="tablist" style="font-size:0.82rem">
+    <li class="nav-item"><a class="nav-link active" data-bs-toggle="pill" href="#tab-templates">📝 Templates</a></li>
+    <li class="nav-item"><a class="nav-link" data-bs-toggle="pill" href="#tab-calendar">📅 Calendar</a></li>
+    <li class="nav-item"><a class="nav-link" data-bs-toggle="pill" href="#tab-hashtag">🏷️ Hashtags</a></li>
+    <li class="nav-item"><a class="nav-link" data-bs-toggle="pill" href="#tab-canva">🎨 Canva Guide</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <!-- ===== TEMPLATES TAB ===== -->
+    <div class="tab-pane fade show active" id="tab-templates">
+
+      <!-- Birthday Special -->
+      <div class="card-premium mb-3 border-start border-4" style="border-color:var(--accent-color)">
+        <div class="d-flex justify-content-between align-items-start">
+          <div style="flex:1">
+            <h6 class="fw-bold mb-1"><i class="bi bi-gift-fill text-warning me-1"></i>Birthday Post Alert</h6>
+            <p class="text-muted small mb-1">Triggered from student birthday. AI Prompt: <em>Warm watercolour of Indian child in kurta celebrating birthday with marigold garland, classroom with wooden Montessori materials.</em></p>
+            <div class="bg-light p-2 rounded small template-body" id="tpl-bday">🎉 Wishing a very Happy Birthday to our bright star, [Student Name]! 🌟 Turning [Age] today at [SchoolName]! We love celebrating you. 🎂🎈 📸 Follow us: [SchoolInstagram] #HappyBirthday #[SchoolCity]Preschool</div>
+          </div>
+          <button class="btn btn-sm btn-outline-primary ms-2" onclick="copyTpl('tpl-bday')"><i class="bi bi-copy"></i></button>
+        </div>
+      </div>
+
+      <!-- Accordion Categories -->
+      <div class="accordion" id="tplAccordion"></div>
+    </div>
+
+    <!-- ===== CALENDAR TAB ===== -->
+    <div class="tab-pane fade" id="tab-calendar">
+      <div class="card-premium">
+        <h5 class="fw-bold mb-3"><i class="bi bi-calendar3 me-2"></i>Content Calendar — Apr–Jun 2026 (36 Posts)</h5>
+        <div class="table-responsive">
+          <table class="table table-sm table-hover align-middle mb-0" style="font-size:0.8rem">
+            <thead class="table-light"><tr><th>Date</th><th>Platform</th><th>Type</th><th>Theme</th><th>Caption</th><th></th></tr></thead>
+            <tbody id="calendarBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== HASHTAG TAB ===== -->
+    <div class="tab-pane fade" id="tab-hashtag">
+      <div class="card-premium">
+        <h5 class="fw-bold mb-3"><i class="bi bi-hash me-2"></i>Hashtag Generator</h5>
+        <div class="row g-2 mb-3">
+          <div class="col-8"><input type="text" class="form-control" id="hashInput" placeholder="Enter post topic, e.g. Diwali celebration"></div>
+          <div class="col-4"><button class="btn btn-primary w-100" onclick="generateHashtags()"><i class="bi bi-magic me-1"></i>Generate</button></div>
+        </div>
+        <div id="hashOutput" class="bg-light rounded p-3 small" style="display:none"></div>
+        <button class="btn btn-sm btn-outline-primary mt-2" id="hashCopyBtn" style="display:none" onclick="copyEl('hashOutput')"><i class="bi bi-copy me-1"></i>Copy All</button>
+      </div>
+    </div>
+
+    <!-- ===== CANVA GUIDE TAB ===== -->
+    <div class="tab-pane fade" id="tab-canva">
+      <div class="accordion" id="canvaAccordion">
+        <div class="accordion-item shadow-sm mb-2 border-0 rounded" style="overflow:hidden">
+          <h2 class="accordion-header"><button class="accordion-button fw-bold" data-bs-toggle="collapse" data-bs-target="#cg1">1. Brand Kit Setup (7 Steps)</button></h2>
+          <div id="cg1" class="accordion-collapse collapse show" data-bs-parent="#canvaAccordion"><div class="accordion-body small">
+            <ol><li>Open Canva → Brand Kit</li><li>Upload your school logo (PNG, transparent)</li><li>Add Primary Colour from M1 profile</li><li>Add Secondary Colour</li><li>Set font: Noto Sans (multilingual)</li><li>Add school tagline as brand text</li><li>Save — all designs auto-apply</li></ol>
+          </div></div>
+        </div>
+        <div class="accordion-item shadow-sm mb-2 border-0 rounded" style="overflow:hidden">
+          <h2 class="accordion-header"><button class="accordion-button collapsed fw-bold" data-bs-toggle="collapse" data-bs-target="#cg2">2. Post Sizes (10 Formats)</button></h2>
+          <div id="cg2" class="accordion-collapse collapse" data-bs-parent="#canvaAccordion"><div class="accordion-body small">
+            <table class="table table-sm mb-0"><thead><tr><th>Format</th><th>Size</th></tr></thead><tbody>
+            <tr><td>Instagram Feed Square</td><td>1080×1080</td></tr><tr><td>Instagram Portrait</td><td>1080×1350</td></tr>
+            <tr><td>Instagram Reels/Story</td><td>1080×1920</td></tr><tr><td>Facebook Feed</td><td>1200×630</td></tr>
+            <tr><td>Facebook Cover</td><td>1640×924</td></tr><tr><td>WhatsApp Status</td><td>1080×1920</td></tr>
+            <tr><td>YouTube Thumbnail</td><td>1280×720</td></tr><tr><td>LinkedIn Post</td><td>1200×627</td></tr>
+            <tr><td>Pinterest Pin</td><td>1000×1500</td></tr><tr><td>Poster A4</td><td>2480×3508</td></tr>
+            </tbody></table>
+          </div></div>
+        </div>
+        <div class="accordion-item shadow-sm mb-2 border-0 rounded" style="overflow:hidden">
+          <h2 class="accordion-header"><button class="accordion-button collapsed fw-bold" data-bs-toggle="collapse" data-bs-target="#cg3">3. AI Image Prompt Formula</button></h2>
+          <div id="cg3" class="accordion-collapse collapse" data-bs-parent="#canvaAccordion"><div class="accordion-body small">
+            <p class="fw-bold mb-1">7-Part Framework:</p>
+            <ol><li><strong>Subject:</strong> Indian children, teachers</li><li><strong>Action:</strong> playing, learning, celebrating</li><li><strong>Emotion:</strong> joyful, curious, proud</li><li><strong>Setting:</strong> classroom with jute mat, wooden materials, terracotta pots</li><li><strong>Lighting:</strong> warm natural sunlight</li><li><strong>Art Style:</strong> warm watercolour illustration</li><li><strong>Colour Palette:</strong> marigold yellow, teal, warm earth tones</li></ol>
+            <p class="text-muted">Paste into Canva Magic Media, DALL·E 3, or Midjourney.</p>
+          </div></div>
+        </div>
+        <div class="accordion-item shadow-sm mb-2 border-0 rounded" style="overflow:hidden">
+          <h2 class="accordion-header"><button class="accordion-button collapsed fw-bold" data-bs-toggle="collapse" data-bs-target="#cg4">4. Optimal Posting Times</button></h2>
+          <div id="cg4" class="accordion-collapse collapse" data-bs-parent="#canvaAccordion"><div class="accordion-body small">
+            <ul class="mb-1"><li>🌅 <strong>Morning:</strong> 7:00–9:00 AM (school drop-off)</li><li>🍽️ <strong>Lunch:</strong> 12:00–1:30 PM</li><li>🌙 <strong>Evening:</strong> 7:30–9:30 PM (peak engagement)</li></ul>
+            <p class="mb-0"><strong>Best days:</strong> Tuesday, Thursday, Saturday</p>
+          </div></div>
+        </div>
+        <div class="accordion-item shadow-sm mb-2 border-0 rounded" style="overflow:hidden">
+          <h2 class="accordion-header"><button class="accordion-button collapsed fw-bold" data-bs-toggle="collapse" data-bs-target="#cg5">5. Hashtag Strategy (4 Tiers)</button></h2>
+          <div id="cg5" class="accordion-collapse collapse" data-bs-parent="#canvaAccordion"><div class="accordion-body small">
+            <ol><li><strong>Broad (5–8):</strong> #Preschool #EarlyChildhood #Montessori #Kindergarten #PlayBasedLearning</li>
+            <li><strong>City (5–8):</strong> #[City]Preschool #[City]Montessori #[City]Moms #[City]Kids</li>
+            <li><strong>Topic (8–10):</strong> Match to post theme — admissions, events, safety, etc.</li>
+            <li><strong>Branded (2–3):</strong> #[SchoolName] #[SchoolName]Family</li></ol>
+          </div></div>
+        </div>
+        <div class="accordion-item shadow-sm mb-2 border-0 rounded" style="overflow:hidden">
+          <h2 class="accordion-header"><button class="accordion-button collapsed fw-bold" data-bs-toggle="collapse" data-bs-target="#cg6">6. Monthly Checklist</button></h2>
+          <div id="cg6" class="accordion-collapse collapse" data-bs-parent="#canvaAccordion"><div class="accordion-body small">
+            <ol><li>Review content calendar for the month</li><li>Create Canva designs for all posts</li><li>Schedule posts using Meta Business Suite</li><li>Collect 1 parent testimonial</li><li>Post 1 behind-the-scenes Reel</li><li>Share 2 educational tips</li><li>Check Instagram/Facebook analytics</li><li>Update Google Business profile</li><li>Respond to all comments within 24h</li><li>Share 4 classroom photos on WhatsApp</li><li>Run 1 engagement poll or quiz</li><li>Plan next month's content</li></ol>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let m8Profile = {};
+
+function initM8() {
+  showLoader();
+  google.script.run
+    .withSuccessHandler(profile => {
+      hideLoader();
+      m8Profile = profile;
+      buildTemplates();
+      buildCalendar();
+      populateAllTemplates();
+    })
+    .withFailureHandler(err => { hideLoader(); alert("Failed to load profile."); })
+    .apiGetSchoolProfile();
+}
+
+/* ========== TEMPLATE DATA ========== */
+function getTemplateData() {
+  return [
+    { cat:'Summer Camp', id:'SC', color:'#e67e22', templates:[
+      {id:'SC-1',title:'Announcement',text:'☀️ Summer is here! Keep your little ones engaged with [SchoolName]\'s exciting Summer Camp! 🎨🏃‍♀️ Ages 2–6. Dates: [CampDates]. Fee: ₹[CampFee]. Register via WhatsApp: [SchoolWhatsApp]',prompt:'Indian children doing art and craft in sunny classroom, marigold garlands, watercolour style'},
+      {id:'SC-2',title:'Activities Teaser',text:'🎭 Drama · 🎨 Art · 🏊 Splash Play · 🧪 Science Fun — [SchoolName]\'s Summer Camp has it ALL! [CampDates] in [SchoolCity]. Limited seats: [SeatsPerBatch]. Call [SchoolPhone]!',prompt:'Indian kids doing science experiments, bright classroom, wooden trays, warm illustration'},
+      {id:'SC-3',title:'Early Bird',text:'🐦 Early Bird Alert! Register by [EarlyBirdDate] for [SchoolName]\'s Summer Camp and get priority batch selection. WhatsApp [SchoolWhatsApp] now! [SchoolWebsite]',prompt:'Cheerful Indian child with backpack arriving at a preschool gate with rangoli'},
+      {id:'SC-4',title:'Last Few Seats',text:'⚠️ Only a few seats left for [SchoolName]\'s Summer Camp! [CampDates]. Don\'t miss out — your child deserves a summer of fun and learning! 📞 [SchoolPhone]',prompt:'Group of Indian children playing outdoors, school garden, warm watercolour'},
+      {id:'SC-5',title:'Parent Testimonial',text:'"My child loved every day of camp!" — Happy Parent at [SchoolName] ☀️ Registrations open for [CampDates]. Fee: ₹[CampFee]. Join the fun! [SchoolWebsite]',prompt:'Indian mother hugging child outside preschool, warm sunlight, watercolour'},
+      {id:'SC-6',title:'Countdown',text:'⏳ 3 days to [SchoolName]\'s Summer Camp! Pack sunscreen, water bottle & excitement! 🌞 See you on [CampDates]. Questions? [SchoolWhatsApp]',prompt:'Countdown calendar with Indian children silhouettes, bright colours, watercolour'}
+    ]},
+    { cat:'Admissions Open', id:'A', color:'#2980b9', templates:[
+      {id:'A-1',title:'Urgency',text:'🎓 Seats filling fast at [SchoolName] for the upcoming academic year! Don\'t miss the chance to give your child the best [SchoolType] foundation in [SchoolCity]. 📞 [SchoolPhone] | [SchoolWebsite]',prompt:'Indian kindergarten classroom, bright sunlight, happy child with wooden blocks'},
+      {id:'A-2',title:'Tour Invite',text:'"Education is a natural process." Schedule a campus tour at [SchoolName], [SchoolCity]\'s premier [SchoolType] school. 📍 [SchoolAddress]. Book: [SchoolWebsite]',prompt:'Beautiful preschool entrance with Indian plants, brass bells, welcome rangoli'},
+      {id:'A-3',title:'Why Choose Us',text:'Why parents choose [SchoolName]: ✅ [SchoolType] pedagogy ✅ Safe environment ✅ Experienced educators ✅ Est. [FoundedYear]. Tour: [TourSchedule]. 📞 [SchoolPhone]',prompt:'Indian teacher showing Montessori materials to child, warm classroom light'},
+      {id:'A-4',title:'Batch Announce',text:'📢 Admissions open for the new batch at [SchoolName]! Ages 2–6. Max [SeatsPerBatch] seats per batch. [SchoolType] curriculum in [SchoolCity]. Apply: [SchoolWebsite]',prompt:'Indian children in circle time, colourful classroom, dhurrie mat, watercolour'},
+      {id:'A-5',title:'Fee Highlight',text:'Quality [SchoolType] education at [SchoolName], [SchoolCity] — starting at just ₹[MonthlyFee]/month. No hidden fees. Tour available: [TourSchedule]. 📞 [SchoolPhone]',prompt:'Happy Indian family visiting preschool, child running in garden, watercolour'},
+      {id:'A-6',title:'Alumni Success',text:'Our little graduates go on to excel! [SchoolName] has been nurturing young minds since [FoundedYear] in [SchoolCity]. Join the [SchoolName] family! [SchoolWebsite] ✨',prompt:'Indian children in convocation caps throwing confetti, school backdrop, watercolour'}
+    ]},
+    { cat:'Parent Testimonials', id:'T', color:'#27ae60', templates:[
+      {id:'T-1',title:'General Love',text:'💬 "[SchoolName] changed our family\'s mornings. My child runs to school!" — Happy Parent. Discover the [SchoolType] difference. Tour: [TourSchedule] 📞 [SchoolPhone]',prompt:'Smiling Indian mother with child at school gate, marigold pots, warm watercolour'},
+      {id:'T-2',title:'Safety Focus',text:'💬 "The safety protocols at [SchoolName] give me total peace of mind." — Parent. CCTV monitored · Verified pickup · Health screening daily. [SchoolWebsite]',prompt:'Indian school security with child-safe gate, CCTV visible, warm illustration'},
+      {id:'T-3',title:'Learning Growth',text:'💬 "In just 3 months at [SchoolName], my child learned to read!" — Proud Parent in [SchoolCity]. [SchoolType] works. See for yourself: [TourSchedule]',prompt:'Indian child reading a book on mat, Montessori shelves behind, warm light'},
+      {id:'T-4',title:'Teacher Praise',text:'💬 "The teachers at [SchoolName] truly understand children." — Parent. Led by [PrincipalName] and MNTTA-certified educators. [SchoolWebsite]',prompt:'Indian female teacher smiling with child, classroom with wooden materials'},
+      {id:'T-5',title:'Community',text:'💬 "We didn\'t just find a school, we found a community." — [SchoolName] Parent. WhatsApp us to visit: [SchoolWhatsApp]. [SchoolCity]\'s favourite [SchoolType] school!',prompt:'Group of Indian parents and children at school festival, warm watercolour'},
+      {id:'T-6',title:'Video Request',text:'📹 We\'d love to hear YOUR [SchoolName] story! Share a 30-second video testimonial & get featured on our page. DM us on Instagram: [SchoolInstagram] 🌟',prompt:'Indian parent recording video on phone outside preschool, warm natural light'}
+    ]},
+    { cat:'Safety PSA', id:'S', color:'#e74c3c', templates:[
+      {id:'S-1',title:'CCTV & Security',text:'🔒 At [SchoolName], your child\'s safety is non-negotiable. 24/7 CCTV · Staff BGV verified · Authorised pickup only · Daily health screening. [SchoolCity]\'s safest [SchoolType] school.',prompt:'School entrance with security guard, CCTV camera, Indian context, watercolour'},
+      {id:'S-2',title:'Health Protocol',text:'🌡️ Every child at [SchoolName] goes through a morning health check: temperature, symptoms, hygiene. Unwell? We notify you instantly via WhatsApp. [SchoolPhone]',prompt:'Indian teacher checking child temperature at gate, marigold pots, warm style'},
+      {id:'S-3',title:'Pickup Safety',text:'🚸 Only authorised persons can pick up your child from [SchoolName]. Photo ID verified. No exceptions. Because safety comes first. — [PrincipalName]',prompt:'Indian parent showing ID at school pickup, child waving, warm watercolour'},
+      {id:'S-4',title:'Fire Safety',text:'🧯 Regular fire drills at [SchoolName]: because preparedness saves lives. Our staff are trained in child evacuation and first aid. #SafeSchool [SchoolCity]',prompt:'Fire drill scene at Indian preschool, children in line, teacher guiding'},
+      {id:'S-5',title:'Food Safety',text:'🍎 No outside food sharing at [SchoolName]. All allergies documented. Staff trained in allergy response. Your child\'s safety = our promise. [SchoolWhatsApp]',prompt:'Indian preschool lunch scene, tiffin boxes, teacher supervising, warm style'},
+      {id:'S-6',title:'Monsoon Safety',text:'🌧️ Monsoon prep at [SchoolName]: anti-skid floors, covered walkways, emergency kits ready. We keep your child safe rain or shine! ☔ [SchoolPhone]',prompt:'Indian preschool in rain, children under covered walkway, watercolour illustration'}
+    ]},
+    { cat:'Free Trial Day', id:'FT', color:'#8e44ad', templates:[
+      {id:'FT-1',title:'Invite',text:'🎉 FREE Trial Day at [SchoolName]! Let your child experience a real [SchoolType] day — no obligation. Book: [SchoolWhatsApp]. Available: [TourSchedule]. [SchoolCity]',prompt:'Indian child exploring Montessori classroom for first time, bright curious eyes'},
+      {id:'FT-2',title:'What to Expect',text:'Wondering what happens at a Trial Day? At [SchoolName]: 🧩 Hands-on activities · 👩‍🏫 Meet our educators · 🏫 Tour the campus. Book now: [SchoolPhone]',prompt:'Indian children and teacher in circle activity, colourful classroom'},
+      {id:'FT-3',title:'Social Proof',text:'✨ 9 out of 10 trial families enrol at [SchoolName]! That\'s how much parents love our [SchoolType] environment. Try us FREE: [SchoolWhatsApp] [SchoolWebsite]',prompt:'Happy Indian family leaving preschool with big smiles, warm sunlight'},
+      {id:'FT-4',title:'Last Slots',text:'📋 Only 4 trial slots left this week at [SchoolName]! Experience [SchoolCity]\'s best [SchoolType] school first-hand. WhatsApp [SchoolWhatsApp] to reserve!',prompt:'Small group of Indian children in trial class, engaged with materials'}
+    ]}
+  ];
+}
+
+function buildTemplates() {
+  const cats = getTemplateData();
+  let html = '';
+  cats.forEach((cat, ci) => {
+    html += `<div class="accordion-item shadow-sm mb-3 border-0 rounded" style="overflow:hidden">
+      <h2 class="accordion-header"><button class="accordion-button ${ci>0?'collapsed':''} fw-bold" data-bs-toggle="collapse" data-bs-target="#cat-${cat.id}">
+        <span style="color:${cat.color}">●</span>&nbsp; ${cat.cat} (${cat.templates.length} Templates)
+      </button></h2>
+      <div id="cat-${cat.id}" class="accordion-collapse collapse ${ci===0?'show':''}" data-bs-parent="#tplAccordion"><div class="accordion-body bg-light">`;
+    cat.templates.forEach(t => {
+      html += `<div class="card mb-2 border-0 shadow-sm"><div class="card-body p-3">
+        <div class="d-flex justify-content-between align-items-start">
+          <h6 class="fw-bold mb-1" style="color:${cat.color}">${t.id}: ${t.title}</h6>
+          <button class="btn btn-sm btn-outline-primary" onclick="copyTpl('tpl-${t.id}')"><i class="bi bi-copy"></i></button>
+        </div>
+        <p class="text-muted mb-1" style="font-size:0.72rem"><i class="bi bi-palette me-1"></i>AI Prompt: ${t.prompt}</p>
+        <div class="p-2 bg-white rounded border small template-body" id="tpl-${t.id}">${t.text}</div>
+        <div class="mt-1"><a href="https://wa.me/?text=${encodeURIComponent(t.text.substring(0,100))}" target="_blank" class="btn btn-sm btn-success py-0" style="font-size:0.7rem"><i class="bi bi-whatsapp me-1"></i>Share</a></div>
+      </div></div>`;
+    });
+    html += '</div></div></div>';
+  });
+  document.getElementById('tplAccordion').innerHTML = html;
+}
+
+/* ========== CONTENT CALENDAR ========== */
+function buildCalendar() {
+  const posts = [
+    {d:'01 Apr',day:'Wed',plat:'Instagram Feed',type:'Awareness',theme:'New Academic Year Welcome'},
+    {d:'03 Apr',day:'Fri',plat:'WhatsApp Status',type:'Engagement',theme:'Ask: "What\'s your child excited about?"'},
+    {d:'05 Apr',day:'Sun',plat:'Instagram Reels',type:'Behind the Scenes',theme:'Classroom setup timelapse'},
+    {d:'08 Apr',day:'Wed',plat:'Facebook',type:'Lead Generation',theme:'Admissions Open A-1'},
+    {d:'10 Apr',day:'Fri',plat:'Instagram Feed',type:'Educational',theme:'5 benefits of early education'},
+    {d:'12 Apr',day:'Sun',plat:'Instagram Reels',type:'Reel/Video',theme:'A day at our school'},
+    {d:'14 Apr',day:'Tue',plat:'WhatsApp Status',type:'Festival',theme:'Baisakhi / Ambedkar Jayanti'},
+    {d:'17 Apr',day:'Fri',plat:'Instagram Feed',type:'Testimonial',theme:'Parent testimonial T-1'},
+    {d:'19 Apr',day:'Sun',plat:'Facebook',type:'Safety',theme:'Safety PSA S-1'},
+    {d:'22 Apr',day:'Wed',plat:'Instagram Feed',type:'Seasonal',theme:'Earth Day activity'},
+    {d:'25 Apr',day:'Sat',plat:'Instagram Reels',type:'Engagement',theme:'Quiz: Guess the material'},
+    {d:'29 Apr',day:'Wed',plat:'Facebook',type:'Lead Generation',theme:'Free Trial Day FT-1'},
+    {d:'01 May',day:'Fri',plat:'Instagram Feed',type:'Festival',theme:'May Day / Labour Day'},
+    {d:'03 May',day:'Sun',plat:'WhatsApp Status',type:'Seasonal',theme:'Summer Camp SC-1 Announce'},
+    {d:'06 May',day:'Wed',plat:'Instagram Feed',type:'Educational',theme:'Montessori vs Traditional'},
+    {d:'08 May',day:'Fri',plat:'Instagram Reels',type:'Behind the Scenes',theme:'Teacher preparing materials'},
+    {d:'10 May',day:'Sun',plat:'Facebook',type:'Engagement',theme:'Mother\'s Day special'},
+    {d:'13 May',day:'Wed',plat:'Instagram Feed',type:'Testimonial',theme:'Parent testimonial T-2'},
+    {d:'15 May',day:'Fri',plat:'WhatsApp Status',type:'Lead Generation',theme:'Summer Camp SC-3 Early Bird'},
+    {d:'17 May',day:'Sun',plat:'Instagram Reels',type:'Reel/Video',theme:'Summer Camp sneak peek'},
+    {d:'20 May',day:'Wed',plat:'Facebook',type:'Safety',theme:'Safety PSA S-2 Health'},
+    {d:'22 May',day:'Fri',plat:'Instagram Feed',type:'Educational',theme:'Sensorial activities at home'},
+    {d:'25 May',day:'Sun',plat:'Instagram Feed',type:'Seasonal',theme:'Summer Camp SC-4 Last Seats'},
+    {d:'29 May',day:'Fri',plat:'WhatsApp Status',type:'Engagement',theme:'Poll: Favourite summer activity'},
+    {d:'01 Jun',day:'Mon',plat:'Instagram Feed',type:'Awareness',theme:'New batch welcome'},
+    {d:'03 Jun',day:'Wed',plat:'Facebook',type:'Lead Generation',theme:'Admissions A-4 Batch'},
+    {d:'05 Jun',day:'Fri',plat:'Instagram Feed',type:'Festival',theme:'World Environment Day'},
+    {d:'08 Jun',day:'Mon',plat:'Instagram Reels',type:'Behind the Scenes',theme:'First day of new batch'},
+    {d:'10 Jun',day:'Wed',plat:'WhatsApp Status',type:'Testimonial',theme:'Parent testimonial T-3'},
+    {d:'13 Jun',day:'Sat',plat:'Instagram Feed',type:'Educational',theme:'Reading milestones'},
+    {d:'15 Jun',day:'Mon',plat:'Facebook',type:'Lead Generation',theme:'Free Trial FT-2'},
+    {d:'18 Jun',day:'Thu',plat:'Instagram Feed',type:'Safety',theme:'Monsoon safety S-6'},
+    {d:'20 Jun',day:'Sat',plat:'Instagram Reels',type:'Reel/Video',theme:'Rainy day indoor activities'},
+    {d:'21 Jun',day:'Sun',plat:'Instagram Feed',type:'Festival',theme:'International Yoga Day'},
+    {d:'25 Jun',day:'Thu',plat:'Facebook',type:'Engagement',theme:'Father\'s Day special'},
+    {d:'28 Jun',day:'Sun',plat:'WhatsApp Status',type:'Seasonal',theme:'Monsoon classroom fun'}
+  ];
+  let html = '';
+  const typeColors = {Awareness:'info',Educational:'primary',Engagement:'warning',
+    'Lead Generation':'success',Festival:'danger',Testimonial:'secondary',
+    Safety:'dark',Seasonal:'info','Behind the Scenes':'primary','Reel/Video':'warning'};
+  posts.forEach((p,i) => {
+    html += `<tr>
+      <td class="fw-semibold text-nowrap">${p.d}<br><span class="text-muted" style="font-size:0.65rem">${p.day}</span></td>
+      <td><span class="badge bg-light text-dark border">${p.plat}</span></td>
+      <td><span class="badge bg-${typeColors[p.type]||'secondary'} bg-opacity-75">${p.type}</span></td>
+      <td>${p.theme}</td>
+      <td class="template-body" id="cal-${i}" style="max-width:200px;font-size:0.75rem">${p.theme} — [SchoolName], [SchoolCity]</td>
+      <td><button class="btn btn-sm btn-outline-primary py-0" onclick="copyTpl('cal-${i}')"><i class="bi bi-copy"></i></button></td>
+    </tr>`;
+  });
+  document.getElementById('calendarBody').innerHTML = html;
+}
+
+/* ========== HASHTAG GENERATOR ========== */
+function generateHashtags() {
+  const topic = document.getElementById('hashInput').value.trim();
+  if (!topic) { alert('Enter a topic first'); return; }
+  const city = m8Profile.SchoolCity || 'City';
+  const name = (m8Profile.SchoolName || 'School').replace(/\s+/g,'');
+  const type = m8Profile.SchoolType || 'Preschool';
+  const words = topic.split(/\s+/).map(w => w.charAt(0).toUpperCase()+w.slice(1)).join('');
+
+  const broad = ['#Preschool','#EarlyChildhood','#'+type,'#PlayBasedLearning','#KidsOfIndia','#PreschoolLife','#ToddlerActivities'];
+  const cityTags = ['#'+city+'Preschool','#'+city+'Moms','#'+city+'Kids','#'+city+type,'#'+city+'Schools','#BestPreschool'+city];
+  const topicTags = ['#'+words,'#'+words+'ForKids','#PreschoolActivity','#ChildDevelopment','#EarlyLearning','#KindergartenLife','#IndianMoms','#ParentingIndia','#MomLife'+city,'#KidsFun'];
+  const branded = ['#'+name,'#'+name+'Family','#'+name+city];
+
+  const all = [...broad,...cityTags,...topicTags,...branded];
+  const out = document.getElementById('hashOutput');
+  out.style.display = 'block';
+  out.textContent = all.join(' ');
+  document.getElementById('hashCopyBtn').style.display = 'inline-block';
+}
+
+/* ========== PERSONALISATION ========== */
+function populateAllTemplates() {
+  const blocks = document.querySelectorAll('.template-body, #tpl-bday');
+  const map = {
+    '[SchoolName]': m8Profile.SchoolName || '{School Name}',
+    '[SchoolType]': m8Profile.SchoolType || '{School Type}',
+    '[SchoolCity]': m8Profile.SchoolCity || '{City}',
+    '[SchoolPhone]': m8Profile.SchoolPhone || '{Phone}',
+    '[SchoolWhatsApp]': m8Profile.SchoolWhatsApp || '{WhatsApp}',
+    '[SchoolWebsite]': m8Profile.SchoolWebsite || '{Website}',
+    '[SchoolAddress]': m8Profile.SchoolAddress || '{Address}',
+    '[SchoolInstagram]': m8Profile.SchoolInstagram || '{Instagram}',
+    '[PrincipalName]': m8Profile.PrincipalName || '{Principal}',
+    '[FoundedYear]': m8Profile.FoundedYear || '{Year}',
+    '[SeatsPerBatch]': m8Profile.SeatsPerBatch || '{Seats}',
+    '[MonthlyFee]': m8Profile.MonthlyFee || '{Fee}',
+    '[CampFee]': m8Profile.CampFee || '{Camp Fee}',
+    '[CampDates]': m8Profile.CampDates || '{Camp Dates}',
+    '[EarlyBirdDate]': m8Profile.EarlyBirdDate || '{Deadline}',
+    '[TourSchedule]': m8Profile.TourSchedule || '{Tour Schedule}'
+  };
+  blocks.forEach(block => {
+    let text = block.innerHTML;
+    for (const [key, val] of Object.entries(map)) {
+      text = text.split(key).join(`<span class="fw-bold" style="color:var(--primary-color)">${val}</span>`);
+    }
+    block.innerHTML = text;
+  });
+}
+
+/* ========== COPY HELPERS ========== */
+function copyTpl(id) {
+  const el = document.getElementById(id);
+  navigator.clipboard.writeText(el.innerText || el.textContent).then(() => {
+    alert('Copied to clipboard!');
+  }).catch(e => console.error(e));
+}
+function copyEl(id) {
+  const el = document.getElementById(id);
+  navigator.clipboard.writeText(el.textContent).then(() => {
+    alert('Hashtags copied!');
+  }).catch(e => console.error(e));
+}
+</script>

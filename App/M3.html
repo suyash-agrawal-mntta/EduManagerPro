@@ -1,0 +1,288 @@
+<div id="m3-container">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="h4 mb-0 fw-bold" style="color: var(--secondary-color)">
+      <i class="bi bi-funnel text-primary me-2"></i>Admissions CRM
+    </h2>
+    <span class="badge bg-primary rounded-pill px-3" id="m3-lead-count">0 Leads</span>
+  </div>
+
+  <!-- KPI Pipeline Summary -->
+  <div class="row mb-3 g-2">
+    <div class="col-6 col-md-3 col-lg">
+      <div class="card-premium h-100 p-2 text-center border-start border-3 border-info">
+        <h4 class="mb-0 fw-bold" id="kpi-enquiry">0</h4>
+        <span class="text-muted" style="font-size:0.7rem">Enquiry</span>
+      </div>
+    </div>
+    <div class="col-6 col-md-3 col-lg">
+      <div class="card-premium h-100 p-2 text-center border-start border-3 border-primary">
+        <h4 class="mb-0 fw-bold" id="kpi-tour">0</h4>
+        <span class="text-muted" style="font-size:0.7rem">Tour</span>
+      </div>
+    </div>
+    <div class="col-6 col-md-3 col-lg">
+      <div class="card-premium h-100 p-2 text-center border-start border-3 border-warning">
+        <h4 class="mb-0 fw-bold" id="kpi-trial">0</h4>
+        <span class="text-muted" style="font-size:0.7rem">Trial</span>
+      </div>
+    </div>
+    <div class="col-6 col-md-3 col-lg">
+      <div class="card-premium h-100 p-2 text-center border-start border-3" style="border-color:#9b59b6!important">
+        <h4 class="mb-0 fw-bold" id="kpi-applied">0</h4>
+        <span class="text-muted" style="font-size:0.7rem">Applied</span>
+      </div>
+    </div>
+    <div class="col-6 col-md-3 col-lg">
+      <div class="card-premium h-100 p-2 text-center border-start border-3 border-success">
+        <h4 class="mb-0 fw-bold" id="kpi-enrolled">0</h4>
+        <span class="text-muted" style="font-size:0.7rem">Enrolled</span>
+      </div>
+    </div>
+    <div class="col-6 col-md-3 col-lg">
+      <div class="card-premium h-100 p-2 text-center border-start border-3 border-secondary">
+        <h4 class="mb-0 fw-bold" id="kpi-waitlist">0</h4>
+        <span class="text-muted" style="font-size:0.7rem">Waitlist</span>
+      </div>
+    </div>
+    <div class="col-6 col-md-3 col-lg">
+      <div class="card-premium h-100 p-2 text-center border-start border-3 border-danger">
+        <h4 class="mb-0 fw-bold" id="kpi-lost">0</h4>
+        <span class="text-muted" style="font-size:0.7rem">Lost</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lead Pipeline Table -->
+  <div class="card-premium">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="fw-bold mb-0">Active Lead Pipeline</h5>
+      <div>
+        <select class="form-select form-select-sm d-inline-block" style="width:auto" id="m3-filter" onchange="filterLeads()">
+          <option value="all">All Stages</option>
+          <option value="Enquiry">Enquiry</option>
+          <option value="Tour Scheduled">Tour Scheduled</option>
+          <option value="Tour Completed">Tour Completed</option>
+          <option value="Free Trial Booked">Free Trial Booked</option>
+          <option value="Trial Completed">Trial Completed</option>
+          <option value="Application Submitted">Application Submitted</option>
+          <option value="Enrolled">Enrolled</option>
+          <option value="Waitlisted">Waitlisted</option>
+          <option value="Lost">Lost</option>
+        </select>
+        <button class="btn btn-sm btn-outline-secondary ms-1" onclick="initM3()"><i class="bi bi-arrow-clockwise"></i></button>
+      </div>
+    </div>
+    
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0" style="font-size:0.88rem">
+        <thead class="table-light">
+          <tr>
+            <th>Parent Name</th>
+            <th>Phone</th>
+            <th>Age</th>
+            <th>Source</th>
+            <th>Status</th>
+            <th>Follow Up</th>
+            <th>Batch</th>
+            <th style="width:40px"></th>
+          </tr>
+        </thead>
+        <tbody id="m3-board">
+          <tr><td colspan="8" class="text-center text-muted py-4">Loading leads...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Lead Detail Modal -->
+<div class="modal fade" id="leadDetailModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" style="color:var(--secondary-color)">
+          <i class="bi bi-person-lines-fill me-2"></i>Update Lead
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="ld-id">
+        <div class="mb-3">
+          <label class="form-label text-muted small">Pipeline Stage</label>
+          <select class="form-select" id="ld-status">
+            <option value="Enquiry">Enquiry</option>
+            <option value="Tour Scheduled">Tour Scheduled</option>
+            <option value="Tour Completed">Tour Completed</option>
+            <option value="Free Trial Booked">Free Trial Booked</option>
+            <option value="Trial Completed">Trial Completed</option>
+            <option value="Application Submitted">Application Submitted</option>
+            <option value="Enrolled">Enrolled</option>
+            <option value="Waitlisted">Waitlisted</option>
+            <option value="Lost">Lost</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label text-muted small">Notes</label>
+          <textarea class="form-control" id="ld-notes" rows="3" placeholder="Add follow-up notes..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary w-50" onclick="saveLeadUpdate()">
+          <i class="bi bi-check-lg me-1"></i>Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const PIPELINE_STAGES = [
+    'Enquiry', 'Tour Scheduled', 'Tour Completed',
+    'Free Trial Booked', 'Trial Completed', 'Application Submitted',
+    'Enrolled', 'Waitlisted', 'Lost'
+  ];
+
+  let allLeads = [];
+
+  function initM3() {
+    showLoader();
+    google.script.run
+      .withSuccessHandler(leads => {
+        allLeads = leads;
+        renderLeads(leads);
+      })
+      .withFailureHandler(err => {
+        hideLoader();
+        document.getElementById('m3-board').innerHTML =
+          `<tr><td colspan="8" class="text-danger text-center py-4">Error: ${err.message}</td></tr>`;
+      })
+      .apiGetLeads();
+  }
+
+  function filterLeads() {
+    const f = document.getElementById('m3-filter').value;
+    if (f === 'all') return renderLeads(allLeads);
+    renderLeads(allLeads.filter(l => l.status === f));
+  }
+
+  function renderLeads(leads) {
+    hideLoader();
+    document.getElementById('m3-lead-count').textContent = leads.length + ' Leads';
+
+    // KPI counts
+    let kpi = { enquiry:0, tour:0, trial:0, applied:0, enrolled:0, waitlist:0, lost:0 };
+    allLeads.forEach(ld => {
+      if (ld.status === 'Enquiry') kpi.enquiry++;
+      else if (ld.status === 'Tour Scheduled' || ld.status === 'Tour Completed') kpi.tour++;
+      else if (ld.status === 'Free Trial Booked' || ld.status === 'Trial Completed') kpi.trial++;
+      else if (ld.status === 'Application Submitted') kpi.applied++;
+      else if (ld.status === 'Enrolled') kpi.enrolled++;
+      else if (ld.status === 'Waitlisted') kpi.waitlist++;
+      else if (ld.status === 'Lost') kpi.lost++;
+    });
+    document.getElementById('kpi-enquiry').textContent = kpi.enquiry;
+    document.getElementById('kpi-tour').textContent = kpi.tour;
+    document.getElementById('kpi-trial').textContent = kpi.trial;
+    document.getElementById('kpi-applied').textContent = kpi.applied;
+    document.getElementById('kpi-enrolled').textContent = kpi.enrolled;
+    document.getElementById('kpi-waitlist').textContent = kpi.waitlist;
+    document.getElementById('kpi-lost').textContent = kpi.lost;
+
+    const tbody = document.getElementById('m3-board');
+    if (leads.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="8" class="text-center text-muted py-4">No leads found. Use the Quick Add (+) button to capture your first lead!</td></tr>`;
+      return;
+    }
+
+    leads.sort((a,b) => new Date(a.follow_up_date) - new Date(b.follow_up_date));
+
+    let html = '';
+    leads.forEach(ld => {
+      const badgeClass = getBadgeClass(ld.status);
+
+      let followUpStr = '';
+      if (ld.follow_up_date) {
+        const d = new Date(ld.follow_up_date);
+        followUpStr = d.toLocaleDateString('en-IN', {month:'short', day:'numeric'});
+        const isLate = d < new Date() && ld.status !== 'Enrolled' && ld.status !== 'Lost';
+        followUpStr = isLate
+          ? `<span class="text-danger fw-bold"><i class="bi bi-exclamation-circle me-1"></i>${followUpStr}</span>`
+          : `<span class="text-muted">${followUpStr}</span>`;
+      }
+
+      const daysSinceContact = ld.last_contact
+        ? Math.floor((Date.now() - new Date(ld.last_contact).getTime()) / 86400000)
+        : '';
+
+      html += `
+        <tr>
+          <td class="fw-semibold">${ld.parent_name || '-'}
+            ${daysSinceContact > 3 ? '<br><span class="badge bg-danger bg-opacity-10 text-danger" style="font-size:0.65rem">'+daysSinceContact+'d no contact</span>' : ''}
+          </td>
+          <td><a href="https://wa.me/91${ld.phone}" target="_blank" class="text-decoration-none text-success"><i class="bi bi-whatsapp me-1"></i>${ld.phone || '-'}</a></td>
+          <td>${ld.child_age ? ld.child_age + 'y' : '-'}</td>
+          <td><span class="badge border border-secondary text-secondary">${ld.source || '-'}</span></td>
+          <td><span class="badge ${badgeClass}" style="cursor:pointer" onclick="openLeadDetail('${ld.lead_id}','${ld.status}','${(ld.notes||'').replace(/'/g,"\\'")}')">
+            ${ld.status || 'Enquiry'} <i class="bi bi-pencil-fill" style="font-size:0.55rem"></i>
+          </span></td>
+          <td>${followUpStr}</td>
+          <td><span class="text-muted small">${ld.batch_target || '-'}</span></td>
+          <td>
+            <button class="btn btn-sm btn-light" onclick="openLeadDetail('${ld.lead_id}','${ld.status}','${(ld.notes||'').replace(/'/g,"\\'")}')">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+          </td>
+        </tr>
+      `;
+    });
+    tbody.innerHTML = html;
+  }
+
+  function getBadgeClass(status) {
+    const map = {
+      'Enquiry': 'bg-info text-dark',
+      'Tour Scheduled': 'bg-primary bg-opacity-75',
+      'Tour Completed': 'bg-primary',
+      'Free Trial Booked': 'bg-warning text-dark',
+      'Trial Completed': 'bg-warning',
+      'Application Submitted': 'bg-purple',
+      'Enrolled': 'bg-success',
+      'Waitlisted': 'bg-secondary',
+      'Lost': 'bg-danger'
+    };
+    return map[status] || 'bg-secondary';
+  }
+
+  function openLeadDetail(id, status, notes) {
+    document.getElementById('ld-id').value = id;
+    document.getElementById('ld-status').value = status;
+    document.getElementById('ld-notes').value = notes;
+    new bootstrap.Modal(document.getElementById('leadDetailModal')).show();
+  }
+
+  function saveLeadUpdate() {
+    showLoader();
+    const id = document.getElementById('ld-id').value;
+    const newStatus = document.getElementById('ld-status').value;
+    const newNotes = document.getElementById('ld-notes').value;
+
+    google.script.run
+      .withSuccessHandler(() => {
+        google.script.run
+          .withSuccessHandler(() => {
+            hideLoader();
+            bootstrap.Modal.getInstance(document.getElementById('leadDetailModal')).hide();
+            initM3();
+          })
+          .withFailureHandler(err => { hideLoader(); alert('Notes save error: ' + err.message); })
+          .apiUpdateLeadNotes(id, newNotes);
+      })
+      .withFailureHandler(err => { hideLoader(); alert('Status update error: ' + err.message); })
+      .apiUpdateLeadStatus(id, newStatus);
+  }
+</script>
+
+<style>
+  .bg-purple { background-color: #9b59b6; color: #fff; }
+</style>

@@ -1,0 +1,33 @@
+Edu Manager Pro - Claude Code
+15 Mar 2026
+=========================================================================================================================================================
+The right way to split the build — 5 Claude Code runs, matching the PRD phases
+You should never try to build all 19 modules in one Claude Code session. Here is the exact split:
+Run 1 — Foundation (give Claude Code this prompt):
+
+"Read EduManagerPro_PRD_FINAL.docx. Build Phase 1: M1 School Identity + School Profile web form, M3 Admissions CRM with Quick Add button, M8 Social Media Engine with 34 auto-personalised templates. Use Google AppScript + HtmlService. Create the complete workbook with all 28 sheet tabs (schema in Section 5 of the PRD). Implement the 5-layer data protection model (Section 9). Do not build any UI beyond these 3 modules. Deliver a deployable AppScript project."
+===========================================================================================================
+Run 2 — Operations Core:
+
+"Continue building EduManagerPro. The Phase 1 AppScript project is attached. Add Phase 2: M2 Student Profiles + Medical + Medication log, M4 Attendance with health screening + pickup log + substitute assignment + Mark-All-Present default, M5 Fee Management with installment plans + UPI receipts, M6 Communication Hub + daily photo sharing, M18 Classroom and Teacher Management."
+===========================================================================================================
+Run 3 — Full Suite:
+
+"Continue building EduManagerPro. Add Phase 3: M7 PTM Manager, M9 Staff Management, M10 Curriculum with Quick Observation default, M11 Calendar GUI + Birthday management, M12 Transport, M13 Safety, M15 Parent Handbook PDF generator, M19 ECA Revenue Engine."
+===========================================================================================================
+Run 4 — Intelligence + Automation:
+
+"Continue building EduManagerPro. Add Phase 4: M14 Reports Dashboard, M16 CPD Log, M17 n8n integrations and GoHighLevel webhook setup, multi-branch Enterprise tier, automated birthday social media post trigger."
+===========================================================================================================
+Run 5 — Polish + Deploy:
+
+"Complete EduManagerPro. Polish all UI to match the design system in Section 7 of the PRD (colours, typography, mobile-first, bottom navigation). Add the 5-minute onboarding flow. Implement automated 3-copy backup system (Section 9.2). Write the production deployment checklist. Generate setup instructions for the school owner."
+=========================================================================================================================================================
+Three practical tips for each Claude Code run
+- First, always upload the PRD FINAL document at the start of every run — Claude Code cannot remember previous sessions, so the PRD is its complete reference each time.
+- Second, at the end of each run, ask Claude Code: "Export the complete AppScript project as a ZIP and write a handoff note summarising what was built and what the next run should continue from." That handoff note becomes the brief for the next session.
+- Third, for Run 2 onwards, also upload the ZIP from the previous run so Claude Code can see the existing code structure before adding to it.
+
+What to do right now
+Download the EduManagerPro_PRD_FINAL.docx from this conversation. That is your complete build specification. Open a new Claude Code session and start with Run 1. This conversation has served its purpose — the PRD is the artefact that carries everything forward.
+===========================================================================================================

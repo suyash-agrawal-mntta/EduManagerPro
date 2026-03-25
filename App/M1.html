@@ -1,0 +1,228 @@
+<div id="m1-container">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="h4 mb-0 fw-bold" style="color: var(--secondary-color)">
+      <i class="bi bi-building text-primary me-2"></i>School Profile
+    </h2>
+    <span class="badge bg-success" id="m1-status"></span>
+  </div>
+
+  <div class="row g-3">
+    <!-- Card 1: Core Identity -->
+    <div class="col-12 col-lg-6">
+      <div class="card-premium h-100">
+        <h5 class="fw-bold mb-3 border-bottom pb-2"><i class="bi bi-star-fill text-warning me-1"></i> Core Identity</h5>
+        <form id="m1-form-core">
+          <div class="mb-3">
+            <label class="form-label text-muted small">School Name</label>
+            <input type="text" class="form-control" name="SchoolName" required>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col-6">
+              <label class="form-label text-muted small">School Type</label>
+              <select class="form-select" name="SchoolType">
+                <option value="Montessori">Montessori</option>
+                <option value="KG">Kindergarten</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label class="form-label text-muted small">Language</label>
+              <select class="form-select" name="LanguagePref">
+                <option value="English">English</option>
+                <option value="Kannada">Kannada</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Telugu">Telugu</option>
+                <option value="Tamil">Tamil</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label text-muted small">Tagline</label>
+            <input type="text" class="form-control" name="SchoolTagline">
+          </div>
+          <div class="row g-2">
+            <div class="col-6">
+              <label class="form-label text-muted small">Principal / Owner Name</label>
+              <input type="text" class="form-control" name="PrincipalName">
+            </div>
+            <div class="col-6">
+              <label class="form-label text-muted small">Year Founded</label>
+              <input type="number" class="form-control" name="FoundedYear" min="1950" max="2030">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Card 2: Contact & Location -->
+    <div class="col-12 col-lg-6">
+      <div class="card-premium h-100">
+        <h5 class="fw-bold mb-3 border-bottom pb-2"><i class="bi bi-geo-alt-fill text-danger me-1"></i> Contact & Location</h5>
+        <form id="m1-form-contact">
+          <div class="mb-3">
+            <label class="form-label text-muted small">Full Address</label>
+            <textarea class="form-control" name="SchoolAddress" rows="2"></textarea>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col-4">
+              <label class="form-label text-muted small">City</label>
+              <input type="text" class="form-control" name="SchoolCity">
+            </div>
+            <div class="col-4">
+              <label class="form-label text-muted small">PIN Code</label>
+              <input type="text" class="form-control" name="SchoolPIN" maxlength="6">
+            </div>
+            <div class="col-4">
+              <label class="form-label text-muted small">State</label>
+              <input type="text" class="form-control" name="SchoolState">
+            </div>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col-6">
+              <label class="form-label text-muted small">Phone</label>
+              <input type="tel" class="form-control" name="SchoolPhone">
+            </div>
+            <div class="col-6">
+              <label class="form-label text-muted small">WhatsApp</label>
+              <input type="tel" class="form-control" name="SchoolWhatsApp">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label text-muted small">Email</label>
+            <input type="email" class="form-control" name="SchoolEmail">
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Card 3: Social Media & Web -->
+    <div class="col-12 col-lg-6">
+      <div class="card-premium h-100">
+        <h5 class="fw-bold mb-3 border-bottom pb-2"><i class="bi bi-globe text-info me-1"></i> Social Media & Web</h5>
+        <form id="m1-form-social">
+          <div class="mb-3">
+            <label class="form-label text-muted small">Website URL</label>
+            <input type="url" class="form-control" name="SchoolWebsite" placeholder="https://...">
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col-6">
+              <label class="form-label text-muted small"><i class="bi bi-facebook text-primary me-1"></i>Facebook Page</label>
+              <input type="text" class="form-control" name="SchoolFacebook" placeholder="Page name or URL">
+            </div>
+            <div class="col-6">
+              <label class="form-label text-muted small"><i class="bi bi-instagram text-danger me-1"></i>Instagram</label>
+              <input type="text" class="form-control" name="SchoolInstagram" placeholder="@handle">
+            </div>
+          </div>
+          <div class="row g-2">
+            <div class="col-6">
+              <label class="form-label text-muted small"><i class="bi bi-youtube text-danger me-1"></i>YouTube Channel</label>
+              <input type="text" class="form-control" name="SchoolYouTube" placeholder="Channel URL">
+            </div>
+            <div class="col-6">
+              <label class="form-label text-muted small"><i class="bi bi-google me-1"></i>Google Business</label>
+              <input type="text" class="form-control" name="SchoolGoogle" placeholder="Profile URL">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Card 4: Fees & Admissions Config -->
+    <div class="col-12 col-lg-6">
+      <div class="card-premium h-100">
+        <h5 class="fw-bold mb-3 border-bottom pb-2"><i class="bi bi-currency-rupee text-success me-1"></i> Fees & Admissions</h5>
+        <form id="m1-form-fees">
+          <div class="row g-2 mb-3">
+            <div class="col-4">
+              <label class="form-label text-muted small">Max Seats / Batch</label>
+              <input type="number" class="form-control" name="SeatsPerBatch">
+            </div>
+            <div class="col-4">
+              <label class="form-label text-muted small">Monthly Fee (₹)</label>
+              <input type="number" class="form-control" name="MonthlyFee">
+            </div>
+            <div class="col-4">
+              <label class="form-label text-muted small">Camp Fee (₹)</label>
+              <input type="number" class="form-control" name="CampFee">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label text-muted small">Summer Camp Dates</label>
+            <input type="text" class="form-control" name="CampDates" placeholder="e.g. May 1 - May 31">
+          </div>
+          <div class="row g-2">
+            <div class="col-6">
+              <label class="form-label text-muted small">Early Bird Deadline</label>
+              <input type="text" class="form-control" name="EarlyBirdDate" placeholder="e.g. March 31">
+            </div>
+            <div class="col-6">
+              <label class="form-label text-muted small">Tour Schedule</label>
+              <input type="text" class="form-control" name="TourSchedule" placeholder="e.g. Mon-Fri 10 AM">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4 text-end">
+    <button class="btn btn-primary px-4 fw-bold shadow-sm" onclick="saveM1()">
+      <i class="bi bi-save me-2"></i>Save Configuration
+    </button>
+  </div>
+</div>
+
+<script>
+  function initM1() {
+    showLoader();
+    google.script.run
+      .withSuccessHandler(profile => {
+        hideLoader();
+        populateForm(document.getElementById('m1-form-core'), profile);
+        populateForm(document.getElementById('m1-form-contact'), profile);
+        populateForm(document.getElementById('m1-form-social'), profile);
+        populateForm(document.getElementById('m1-form-fees'), profile);
+      })
+      .withFailureHandler(err => {
+        hideLoader();
+        document.getElementById('m1-status').textContent = "Error loading data";
+        document.getElementById('m1-status').classList.replace('bg-success', 'bg-danger');
+      })
+      .apiGetSchoolProfile();
+  }
+
+  function populateForm(form, data) {
+    Array.from(form.elements).forEach(el => {
+      if(el.name && data[el.name] !== undefined) {
+        el.value = data[el.name];
+      }
+    });
+  }
+
+  function saveM1() {
+    showLoader();
+    const data = {};
+    const extract = (form) => {
+      Array.from(form.elements).forEach(el => {
+        if(el.name) data[el.name] = el.value;
+      });
+    };
+    extract(document.getElementById('m1-form-core'));
+    extract(document.getElementById('m1-form-contact'));
+    extract(document.getElementById('m1-form-social'));
+    extract(document.getElementById('m1-form-fees'));
+
+    google.script.run
+      .withSuccessHandler(() => {
+        hideLoader();
+        const stat = document.getElementById('m1-status');
+        stat.textContent = "Saved Successfully";
+        setTimeout(() => stat.textContent = "", 3000);
+      })
+      .withFailureHandler(err => {
+        hideLoader();
+        alert('Failed to save: ' + err.message);
+      })
+      .apiUpdateSchoolProfile(data);
+  }
+</script>

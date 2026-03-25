@@ -1,0 +1,1865 @@
+# EduManager Pro — Product Requirements Document
+## Complete Build Specification for Claude Code
+
+**Developed by:** MNTTA — Montessori & Nursery Teachers Training Academy, Bangalore, India  
+**Document type:** Product Requirements Document — Claude Code Build Command  
+**Target market:** India's 2.5 lakh preschools · SEA Phase 2  
+**Platform:** Google AppScript + HTML/CSS/JS + n8n + GoHighLevel  
+**Pricing:** ₹7,990 Early Bird · ₹14,990 Standard · ₹24,990 Pro Setup (all one-time, no subscriptions ever)  
+**Confidential — For Developer Use Only**
+
+---
+
+## Table of Contents
+
+1. [Executive Summary & Vision](#1-executive-summary--vision)
+2. [School Type Configuration](#2-school-type-configuration)
+3. [Pricing Architecture & Licence Management](#3-pricing-architecture--licence-management)
+4. [Module Specifications — 19 Modules](#4-module-specifications--19-modules)
+   - [M1 School Identity & Configuration](#module-1--school-identity--configuration)
+   - [M2 Student Profiles & Enrolment](#module-2--student-profiles--enrolment)
+   - [M3 Admissions CRM & Lead Management](#module-3--admissions-crm--lead-management)
+   - [M4 Attendance Tracking](#module-4--attendance-tracking)
+   - [M5 Fee Management](#module-5--fee-management)
+   - [M6 Parent Communication Hub](#module-6--parent-communication-hub)
+   - [M7 PTM Manager](#module-7--ptm-parent-teacher-meeting-manager)
+   - [M8 Social Media Marketing Engine](#module-8--social-media-marketing-engine)
+   - [M9 Staff Management](#module-9--staff-management)
+   - [M10 Curriculum, Learning & Assessment](#module-10--curriculum-learning--assessment)
+   - [M11 Events, Activities & School Calendar](#module-11--events-activities--school-calendar)
+   - [M12 Transport Management](#module-12--transport-management)
+   - [M13 Safety & Compliance](#module-13--safety--compliance)
+   - [M14 Reports & Analytics Dashboard](#module-14--reports--analytics-dashboard)
+   - [M15 Parent Handbook Generator](#module-15--parent-handbook-generator)
+   - [M16 Staff CPD & Training Log](#module-16--staff-cpd--training-log-simplified)
+   - [M17 Integrations & Automation](#module-17--integrations--automation)
+   - [M18 Classroom & Teacher Management](#module-18--classroom--teacher-management)
+   - [M19 ECA Revenue Engine](#module-19--extra-curricular-activities-eca-revenue-engine)
+5. [Data Architecture — Google Sheets Schema](#5-data-architecture--google-sheets-schema)
+6. [Technical Architecture](#6-technical-architecture)
+7. [GUI Design System & UX Requirements](#7-gui-design-system--ux-requirements)
+8. [Build Sequence & Phase Plan](#8-build-sequence--phase-plan)
+9. [Data Protection, Integrity & Backup](#9-data-protection-integrity--backup)
+10. [Licence Delivery & Pricing Tiers](#10-licence-delivery--pricing-tiers)
+11. [Success Metrics](#11-success-metrics)
+12. [Appendix — Module Build Priority](#12-appendix--module-build-priority)
+
+---
+
+## 1. Executive Summary & Vision
+
+> **EduManager Pro** is a one-time-purchase, all-in-one preschool management and marketing platform built natively for Indian preschool owners. It is the **world's first school management system** to combine operational management with a complete social media marketing engine — all in one product at a single lifetime price with no recurring charges, no subscriptions, and no per-user fees ever.
+
+### 1.1 Problem Statement
+
+Indian preschool owners face three simultaneous crises that no single tool addresses today:
+
+- **Administrative overload** — attendance, fees, parent communication, staff management, and compliance are managed across notebooks, WhatsApp groups, and disconnected Excel files with zero integration
+- **Marketing paralysis** — 80% of preschool owners know they need to post on Instagram and Facebook but do not know what to write, how to design posts, or when to publish
+- **Expensive and irrelevant software** — existing tools cost ₹10,000–₹50,000/year, are built for the US/UK market, address only one function, and require recurring subscription payments that school owners deeply resent
+
+### 1.2 Unique Differentiators
+
+| Feature | Description |
+|---------|-------------|
+| Social media engine | 34 auto-personalised post templates + AI image prompts + Canva guide — no competitor has this anywhere in the world |
+| WhatsApp-first architecture | All notifications, alerts, communications, receipts, and updates via WhatsApp — matching Indian parent behaviour |
+| School-type adaptive | Montessori and Kindergarten modes — all templates, trackers, and reports adapt automatically |
+| Daily photo sharing | One-tap classroom photo to WhatsApp for all parents — the #1 daily task Indian parents expect |
+| Birthday management | Auto-alert + personalised WhatsApp + social media post on every child's birthday — zero misses |
+| Auto-generated Parent Handbook | Professional PDF handbook auto-generated from school profile in one click |
+| ECA Revenue Engine | Complete post-school-hour activity management — additional ₹1.5–₹2.5L/month revenue for a 50-student school |
+| India-native payments | UPI QR receipts, NEFT, cash/cheque log, Tally CSV export |
+| One-time price forever | ₹14,990 once — replaces ₹20,000–₹75,000/year in annual subscriptions |
+
+---
+
+## 2. School Type Configuration
+
+EduManager Pro supports **TWO school types only**. Schools that blend both methods (Integrated) select Montessori and use subject-grade fields in addition to Montessori material tracking.
+
+### 2.1 School Types
+
+| Type | Description |
+|------|-------------|
+| **Montessori** | Child-led work cycles · Material progression tracking (5 areas: Practical Life, Sensorial, Language, Mathematics, Cultural) · Observation-based assessment · MNTTA ECCE curriculum alignment · NEP 2020 outcome mapping · Child Portfolio PDF report · Montessori-specific social media templates |
+| **Kindergarten (Traditional)** | Structured teacher-led sessions · Subject timetable (English, Maths, EVS, Hindi, Art, Music, PE) · Unit plan templates · Grades-based assessment · Traditional report card · Activity-focused social media templates · CBSE/ICSE-aligned terminology |
+
+### 2.2 School Type Rules
+
+- Selected **once** during 5-minute onboarding
+- Displayed as a badge throughout the entire app
+- **Can be changed** in Settings at any time — all existing data is preserved
+- Changes which templates, reports, curriculum screens, and social media language are shown throughout the app
+
+---
+
+## 3. Pricing Architecture & Licence Management
+
+### 3.1 Single-School Pricing Tiers
+
+| Tier | Price | Inclusions |
+|------|-------|-----------|
+| **Early Bird** | ₹7,990 one-time | First 100 buyers only · All 19 modules · Lifetime access · Email support 48hr · Live counter on sales page |
+| **Standard** | ₹14,990 one-time | Permanent price after early bird · All 19 modules · Lifetime access · WhatsApp support 24hr · 1 free 30-min onboarding call |
+| **Pro + Setup** | ₹24,990 one-time | All Standard + GoHighLevel CRM configured + n8n automation workflows set up + MNTTA expert 3-hour setup session + 3 months priority support |
+
+> **CRITICAL ARCHITECTURE DECISION:** All three tiers get all 19 modules. Differences are in support and setup services only — NOT in software features. Build one webapp. Read `plan_tier` from `_licence` tab at startup to show appropriate support contact and upgrade options.
+
+```javascript
+// Licence check — run at app startup
+function getLicenceTier() {
+  const sheet = SpreadsheetApp.getActive().getSheetByName('_licence');
+  return sheet.getRange('B2').getValue(); // returns: early_bird | standard | pro
+}
+```
+
+### 3.2 Licence Record Fields
+
+The `_licence` tab stores:
+```
+school_id | owner_name | email | phone | plan_tier | purchase_date | payment_mode | 
+payment_reference | upgrade_history_json | support_entitlement | onboarding_call_status | 
+school_type | active
+```
+
+### 3.3 Plan Upgrade Flow
+
+1. Owner → Settings → My Plan → View current plan and benefits
+2. Click "Upgrade" → See delta benefit description
+3. Pay difference (auto-calculated: e.g. ₹14,990 – ₹7,990 = ₹7,000 upgrade fee)
+4. Enter UPI/NEFT payment reference
+5. `plan_tier` updates instantly in `_licence` tab
+6. WhatsApp confirmation sent to owner
+
+**Rules:**
+- No downgrades permitted — communicated clearly at purchase
+- 7-day refund window if fewer than 20% of features used (tracked via `_audit_log`)
+- Licence transfer allowed once per licence with documentation — ₹999 transfer fee
+
+### 3.4 Multi-Branch / Franchise Pricing
+
+| Enterprise Plan | Branches | Price (One-Time) | Per-Branch Cost |
+|-----------------|----------|-----------------|-----------------|
+| Starter Network | 2–5 branches | ₹34,990 | ₹7,000–17,500 |
+| Growth Network | 6–10 branches | ₹54,990 | ₹5,499–9,165 |
+| Regional Chain | 11–25 branches | ₹99,990 | ₹4,000–9,090 |
+| National Franchise | 26–50 branches | ₹1,74,990 | ₹3,500–6,730 |
+| Enterprise Custom | 51+ branches | Custom quote | ~₹2,500/branch |
+
+### 3.5 Multi-Branch Feature Requirements
+
+| Feature | Requirement |
+|---------|-------------|
+| Franchisor dashboard | Consolidated view: total enrolment · fee collection per branch · attendance % · marketing activity score · staff count · open leads |
+| Branch management | Add/remove branches · branch-specific school profile inheriting franchise brand kit · branch manager limited login |
+| Brand control | Franchisor sets master logo, colours, font · branches cannot override · batch-update all branch profiles |
+| Data isolation | Each branch's data isolated from other branches · only franchisor sees all · zero cross-branch data leakage |
+| Consolidated reporting | Monthly PDF: total revenue, enrolment, occupancy % per branch, attendance trends, posts published |
+
+---
+
+## 4. Module Specifications — 19 Modules
+
+> **Build sequence:** Phase 1 = M1, M3, M8 · Phase 2 = M2, M4, M5, M6, M18 · Phase 3 = M7, M9, M10, M11, M12, M13, M15, M19 · Phase 4 = M14, M16, M17
+
+---
+
+### MODULE 1 — School Identity & Configuration
+
+#### School Profile — 22 Fields (Named Ranges in `_config` tab)
+
+```
+School Name         → Named Range: SchoolName
+School Tagline      → Named Range: SchoolTagline  
+Full Address        → Named Range: SchoolAddress
+City                → Named Range: SchoolCity
+PIN Code            → Named Range: SchoolPIN
+State               → Named Range: SchoolState
+Primary Phone       → Named Range: SchoolPhone
+WhatsApp Number     → Named Range: SchoolWhatsApp
+Email Address       → Named Range: SchoolEmail
+Website URL         → Named Range: SchoolWebsite
+Facebook Page Name  → Named Range: SchoolFacebook
+Instagram Handle    → Named Range: SchoolInstagram
+YouTube Channel     → Named Range: SchoolYouTube
+Google Business     → Named Range: SchoolGoogle
+Principal/Owner     → Named Range: PrincipalName
+Year Founded        → Named Range: FoundedYear
+Max Seats/Batch     → Named Range: SeatsPerBatch
+Monthly Tuition Fee → Named Range: MonthlyFee
+Summer Camp Fee     → Named Range: CampFee
+Summer Camp Dates   → Named Range: CampDates
+Early Bird Deadline → Named Range: EarlyBirdDate
+Tour Schedule       → Named Range: TourSchedule
+```
+
+**Business rule:** All 22 fields stored as Named Ranges. Every module and all 34 social media templates auto-fill from these. SUBSTITUTE() formula chain replaces `[School Name]`, `[Phone]`, `[Address]` etc. across all templates.
+
+#### Additional Configuration
+
+| Feature | Requirement |
+|---------|-------------|
+| School type selection | Montessori or Kindergarten · selected at setup · displayed as badge on every screen · changeable in Settings with data preservation |
+| Brand kit | Upload school logo (PNG, transparent background) · Primary colour hex · Secondary colour hex · Font choice (default: Noto Sans) · All templates auto-apply brand kit |
+| Academic year config | Set academic year dates · batch names (e.g. "June 2026", "January 2027") · term dates · Indian public holidays pre-loaded · school-specific holidays added here |
+| Language preference | English (default) · Kannada · Hindi · Telugu · Tamil — selected at setup · student and parent names stored in chosen script |
+| School timing config | School open time · school close time · late pickup threshold (minutes) · late pickup fee per 15 minutes |
+
+---
+
+### MODULE 2 — Student Profiles & Enrolment
+
+#### Student Master Record
+```
+student_id          → Format: STU-YYYYMMDD-NNN (auto-generated, Column A)
+full_name           → String
+preferred_name      → String (nickname)
+dob                 → Date (DD/MM/YYYY)
+age                 → Auto-calculated from dob
+blood_group         → Dropdown: A+/A-/B+/B-/AB+/AB-/O+/O-/Unknown
+photo               → File reference (Google Drive link)
+aadhaar             → String (optional)
+previous_school     → String
+batch_id            → FK: batches
+classroom_id        → FK: classrooms
+fee_plan_type       → Dropdown: Monthly | Quarterly | Half-yearly | Annual
+status              → Dropdown: Active | Paused | Withdrawn
+deleted             → Boolean (FALSE default)
+deleted_at          → Timestamp (null default)
+```
+
+#### Family Profile
+```
+family_id           → FK reference
+student_id          → FK: students
+father_name         → String
+mother_name         → String
+guardian_name       → String (if different from parents)
+primary_phone       → String
+whatsapp            → String
+email               → String
+occupation          → String
+home_address        → String
+emergency_contact_1 → JSON: {name, phone, relationship}
+emergency_contact_2 → JSON: {name, phone, relationship}
+authorised_pickup_list → JSON array: [{name, phone, relationship, photo_url}]
+```
+
+#### Medical Record
+```
+medical_id          → STR-NNN
+student_id          → FK: students
+allergy_list        → JSON array: [{allergen, severity, action}]
+chronic_conditions  → String
+current_medications → String
+doctor_name         → String
+doctor_phone        → String
+hospital_preference → String
+vaccination_record  → String (or file reference)
+last_physical_exam_date → Date
+```
+
+#### Medication Administration Log
+```
+med_log_id          → MLG-NNN
+student_id          → FK: students
+date                → Date
+medicine_name       → String
+dose                → String
+time_given          → Time
+given_by_staff_id   → FK: staff
+parent_instruction  → String (typed verbatim from parent note)
+notes               → String
+```
+**Business rule:** When medication is administered, auto-send WhatsApp to parent:  
+`"[Child name] was given [medicine] [dose] at [time] today by [staff name]. — [School Name]"`
+
+#### Sibling Linking
+- `sibling_group_id` field on student record
+- When two students share the same `family_id`, sibling discount applies automatically to younger child's fee calculation
+
+#### Document Checklist (per student)
+Tracked fields: `birth_certificate` · `address_proof` · `parent_id` · `medical_cert` · `vaccination_card` · `photo` · `econsent_forms` — each is Boolean (uploaded/not uploaded)
+
+#### Student ID Card
+- Auto-generate printable A6 PDF: student photo, name, class, school name, emergency contact, blood group
+- Download PDF button in student profile
+
+#### Enrolment Record
+```
+enrolment_id        → ENR-NNN
+student_id          → FK
+batch_id            → FK
+enrolment_date      → Date
+classroom_id        → FK
+fee_plan_type       → Monthly | Quarterly | Half-yearly | Annual
+admission_fee_paid  → Boolean
+status              → Active | Paused | Withdrawn
+```
+
+---
+
+### MODULE 3 — Admissions CRM & Lead Management
+
+#### QUICK ADD — Floating "+" Button (MUST HAVE — #1 Priority)
+
+**Requirement:** A floating "+" button is ALWAYS visible on every screen of the app (bottom-right corner). Tapping it opens a 4-field mini-form:
+```
+Parent Name   → Text input
+Phone         → Tel input (auto-format Indian number)
+Child Age     → Number input (months or years)
+Source        → Dropdown: WhatsApp | Instagram | Facebook | Walk-in | Referral | Other
+```
+Save in 10 seconds. Lead created in CRM. Full details filled later from the lead record.  
+**Business rule:** This is the #1 most-used admissions feature. Accessible in exactly 1 tap from anywhere in the app. No navigation required.
+
+#### Lead Pipeline Stages
+```
+Enquiry → Tour Scheduled → Tour Completed → Free Trial Booked → 
+Trial Completed → Application Submitted → Enrolled → Waitlisted → Lost
+```
+- Drag-and-drop status update in kanban or list view
+- Batch-centric Indian model: June batch and January batch (not rolling US-style)
+- Each lead shows: parent name · child age · source · days since last contact · batch target
+
+#### Lead Record Fields
+```
+lead_id             → LED-NNN
+parent_name         → String
+child_age           → Number
+source              → WhatsApp | Instagram | Facebook | Walk-in | Referral | Other
+status              → Pipeline stage (see above)
+last_contact        → Timestamp
+batch_target        → e.g. "June 2026"
+notes               → Free text
+phone               → String
+created_at          → Timestamp
+```
+
+#### Free Trial Day Manager
+| Feature | Requirement |
+|---------|-------------|
+| Slot management | Maximum 4 trial children per session · booking calendar |
+| Confirmation | Auto-WhatsApp to parent on booking with date, time, address |
+| Follow-up | n8n trigger: 24 hours after trial → follow-up WhatsApp to parent if not enrolled |
+| Convert | "Convert to Enrolled" button → auto-creates full student profile from lead data |
+
+#### Source Tracking & Analytics
+- Monthly report: Instagram vs Facebook vs WhatsApp vs referral vs walk-in
+- Lead-to-enrolment conversion rate per source
+- Identifies highest-ROI marketing channel
+
+#### Follow-up Automation (n8n)
+- Lead status unchanged for 48 hours → WhatsApp nudge to owner
+- Trial completed + not enrolled in 3 days → auto-send follow-up WhatsApp template to parent
+
+#### Batch Occupancy Tracker
+- Real-time seats available per batch per age group
+- Alert when batch 80% full → shown on owner dashboard
+- When 5 seats remaining → M8 urgency social media post template auto-generated
+
+#### GoHighLevel Sync
+- All leads sync to GoHighLevel pipeline via n8n webhook
+- Two-way status update between EduManager Pro and GoHighLevel
+- Pro tier includes full GHL configuration
+
+#### Admission Letter Generator
+- One-click admission confirmation letter: school letterhead + student name + batch + fee details + start date
+- Download PDF · WhatsApp to parent
+
+---
+### MODULE 4 — Attendance Tracking
+
+#### DEFAULT BEHAVIOUR — Mark All Present First (MUST HAVE)
+**Business rule:** Attendance screen opens with ALL students already marked PRESENT by default. Teacher only taps names to change to Absent, Late, or Half-Day. Do NOT build a system that requires marking each child individually. In a 20-child classroom, typically only 1–3 changes are needed daily.
+
+#### Attendance Record
+```
+att_id              → ATT-NNN
+student_id          → FK: students
+date                → Date
+status              → Present | Absent | Late | Half-Day (default: Present)
+check_in_time       → Time (set when QR code scanned or manual check-in)
+health_status       → Healthy | Fever | Rash | Cough | Sent-Home (set during gate check)
+health_temp         → Decimal (°C or °F, configured in settings)
+marked_by           → FK: staff (who marked the attendance)
+```
+
+#### QR Code Check-in (Optional)
+- Generate unique QR per student (displayed in student profile)
+- Teacher scans on arrival → timestamp recorded → auto-marks Present
+- Overrides the default-present state with actual check-in time
+
+#### Morning Health Screening Log (MUST HAVE)
+After marking attendance, teacher records gate health check:
+```
+screen_id           → HSC-NNN
+student_id          → FK
+date                → Date
+temperature         → Decimal (°C or °F)
+status              → Healthy | Fever | Rash | Cough/Cold | Sent-Home
+sent_home           → Boolean
+notes               → String
+recorded_by         → FK: staff
+```
+**Business rule:** If `status = Sent-Home`, auto-send WhatsApp to parent immediately:  
+`"We noticed [child name] had [health issue] today and asked you to take them home. Please rest for 48 hours and return when fully well. — [School Name] ([Phone])"`
+
+#### WhatsApp Arrival Alert
+- Trigger: student check-in event
+- n8n sends WhatsApp to parent: `"[Child name] has arrived safely at [School Name] at [time]. Have a great day! 🌱"`
+- Toggle on/off per parent preference (stored in `families` tab)
+
+#### Absence Notification
+- Trigger: AppScript time-based trigger at 9:30 AM
+- If student NOT checked in by 9:30 AM → WhatsApp to parent: `"We have not seen [child name] today. Is everything okay? Please let us know. — [School Name]"`
+- Can be disabled per student (if parent pre-notified)
+
+#### Pickup Log — Safety Critical (MUST HAVE)
+```
+pickup_id           → PKP-NNN
+student_id          → FK
+att_id              → FK (links to today's attendance record)
+collector_name      → String (from authorised pickup list)
+relationship        → String
+time_of_collection  → Timestamp
+verified_against_authorised_list → Boolean
+staff_id            → FK (staff member who released child)
+notes               → String
+```
+**Business rule:**  
+1. Before logging pickup, system displays the authorised pickup list for that student (names + photos from M2 family profile)
+2. Staff confirms identity visually and taps the correct person from the list
+3. If person is NOT on authorised list → system shows warning and requires owner override
+4. Child must never be released without a pickup log entry
+
+#### Late Pickup Tracking
+- If child not picked up by (school close time + late pickup threshold from M1 config):
+  - System auto-calculates late pickup fee (per 15 minutes × fee rate from M1 config)
+  - Fee added to next month's fee collection screen
+  - WhatsApp to parent: `"[Child name] was picked up at [time], [X] minutes after school close. A late pickup charge of ₹[amount] has been added to your account."`
+
+#### Teacher Login — Limited Access
+**Business rule:**
+- Teacher logs in with their own limited-role credentials (email set in their staff profile)
+- Sees ONLY their assigned classroom students
+- Can ONLY mark attendance and add curriculum observations (M10)
+- Cannot see: fee records, CRM leads, staff salaries, management reports, other classrooms
+
+#### Substitute Teacher Assignment (MUST HAVE)
+**Trigger:** Teacher marks themselves absent OR owner marks a teacher absent  
+**Flow:**
+1. System shows: `"⚠️ [Classroom Name] is uncovered. [Teacher Name] is absent today."`
+2. Owner sees list of available staff (not currently assigned elsewhere)
+3. Owner taps to assign substitute to the classroom for the day
+4. Ratio dashboard updates with substitute in place
+5. Auto-generate WhatsApp to parents of affected classroom:  
+   `"[Teacher Name] is unwell today. [Substitute Name] will be with [Classroom Name]. — [School Name]"`
+
+#### Staff Attendance
+- Separate daily check-in/check-out for staff
+- Leave request and approval workflow
+- Leave balance tracker: CL (Casual Leave) · PL (Privilege Leave) · SL (Sick Leave) per Indian labour norms
+- Monthly staff attendance summary
+
+#### Monthly Attendance Reports
+- Per student: days present / absent / late / health-sent-home / attendance %
+- Annual attendance register PDF (format aligned to school inspection requirements)
+- Bulk PDF generation for all students
+
+---
+
+### MODULE 5 — Fee Management
+
+#### Fee Plan Types — ENHANCED (Critical for Indian market)
+
+| Plan Type | Payment Months | Reminder Trigger |
+|-----------|---------------|-----------------|
+| Monthly | Every month | 1st of each month |
+| Quarterly | April, July, October, January | 1st of each quarter month |
+| Half-yearly | April, October | 1st of April and October |
+| Annual | April only | 1st of April |
+
+**Business rule:** Fee plan selected per student at enrolment. System sends reminders ONLY on actual due dates. A quarterly-plan student must NOT receive a monthly reminder in months 2 and 3.
+
+#### Fee Structure Setup
+- Configure fee heads: Tuition · Admission (one-time) · Transport · Activity · Material · Late Pickup · Custom (unlimited custom heads)
+- Set amount per head per plan type
+- Sibling discount: configured as % applied automatically to younger sibling
+- Scholarship flag with discount %
+
+#### Fee Collection Record
+```
+fee_id              → FEE-NNN
+student_id          → FK
+month               → String (e.g. "April 2026")
+fee_head            → String (e.g. "Tuition", "Transport")
+amount              → Decimal
+plan_type           → Monthly | Quarterly | Half-yearly | Annual
+mode                → UPI | NEFT | IMPS | Cash | Cheque
+upi_ref             → String (UPI transaction ID)
+cheque_number       → String
+bank_name           → String
+paid_at             → Timestamp
+receipt_number      → String (auto-generated: RCP-SCHOOLCODE-YYYY-NNN)
+```
+
+#### UPI Receipt Generator
+Auto-generate formatted PDF receipt on payment:
+- School name (as per GST registration if applicable)
+- GSTIN (optional field from M1 config)
+- Student name and batch
+- Fee heads itemised
+- Total amount in words (Indian legal format — e.g. "Rupees Eight Thousand Five Hundred Only")
+- Payment mode and reference
+- Receipt number
+- School stamp placeholder
+- WhatsApp receipt to parent immediately on generation
+
+#### Fee Reminder System
+- AppScript trigger fires on due date per plan type
+- WhatsApp to parent: `"Hi [Parent name], [Child name]'s [fee_head] fee of ₹[amount] for [month] is due. Pay via UPI: [UPI ID] or contact [Phone]. Thank you! — [School Name]"`
+- Second reminder 5 days later if unpaid
+- Escalation to owner after 10 days: `"₹[amount] outstanding for [student name] — [N] days overdue"`
+
+#### Defaulter Dashboard
+- Outstanding fees by student with filter by batch/classroom
+- Total outstanding amount (school-wide)
+- Months overdue per student
+- One-tap WhatsApp to individual parent
+- Bulk WhatsApp to all defaulters (batch-selectable)
+
+#### Tally CSV Export
+- Monthly fee collection data in Tally-compatible CSV format
+- Eliminates manual double-entry for school accountant
+- Export button in Reports section
+
+#### Annual Fee Report
+- Fee collected vs expected per month (bar chart)
+- Year-to-date collection total
+- Outstanding total
+- Revenue by fee head breakdown
+- Export PDF for CA/accountant
+
+---
+
+### MODULE 6 — Parent Communication Hub
+
+#### Daily Classroom Photo/Video Sharing — MUST HAVE (#1 Daily Task)
+
+**Business rule:** This is the single most-used daily feature. Indian parents expect classroom photos by noon every day. This feature must be accessible in exactly 2 taps from the home screen.
+
+**Flow:**
+1. Owner or teacher opens app → taps "Share Photos" (prominent on home screen)
+2. Select classroom
+3. Take photo with device camera OR pick from gallery (max 8 images per send)
+4. Auto-resize images to WhatsApp-optimal dimensions (max 5MB per image)
+5. Preview shown with caption field (pre-filled: `"Good morning from [Classroom Name] at [School Name]! 🌱"`)
+6. Select recipients: **All Parents in Classroom** (default) / Individual parents
+7. One tap → send via WhatsApp
+
+#### WhatsApp Broadcast Generator
+Pre-written templates (all auto-filled from School Profile):
+- Holiday notice
+- Exam/assessment schedule
+- Event invite
+- Fee reminder
+- School closure alert
+- Parent meeting invite
+- Emergency notice
+- Weekly classroom update
+- Custom broadcast (free text)
+
+**Recipients:** All parents / Specific batch / Individual family (selectable)
+
+#### Circular Generator
+- Create school circulars with auto-applied school letterhead
+- Rich text editor
+- Auto-insert school name, date, logo, principal name
+- Download PDF
+- WhatsApp to selected recipients
+
+#### eConsent Forms
+Types: Field trip permission · Photo/video consent · Medical treatment consent · Event participation  
+- Digital acknowledgement via WhatsApp reply ("Reply YES to confirm")
+- Status tracked per family (Pending / Confirmed / Declined)
+- Reminder auto-sent after 48 hours if no response
+
+#### Emergency Alert
+- One-tap broadcast to ALL parents simultaneously
+- Highest priority — skips all rate limits
+- Message includes: school name + date/time + situation + instructions
+- Delivery status tracked
+
+#### Communication Log
+- Full history of all broadcasts, circulars, individual messages per family
+- Searchable by date, type, family name
+- Read/delivered status where available
+
+#### Monthly Newsletter Template
+- Principal's message + events this month + child spotlight + upcoming dates
+- Download PDF
+- WhatsApp or email delivery option
+
+---
+### MODULE 7 — PTM (Parent-Teacher Meeting) Manager
+
+| Feature | Requirement |
+|---------|-------------|
+| PTM schedule builder | Set PTM date · time slot duration (15/20/30 min configurable) · auto-generate all slots for the school · assign families by batch / alphabetical / manual |
+| PTM invite | Auto-generate personalised invite: date, time slot, teacher name · WhatsApp to each parent · Google Calendar link included |
+| Pre-meeting child summary | Auto-generate per-child summary: attendance % · fee status · material progress (Montessori) or subject grades (KG) · observation highlights · suggested discussion points · teacher reviews and personalises before meeting |
+| Meeting notes & actions | Record discussion points, parent concerns, decisions, action items during PTM · actions tagged to student profile · action dashboard: Open / Closed / Overdue · WhatsApp reminder on action due date |
+| PTM feedback form | Post-meeting WhatsApp to parent: 3-question anonymous feedback · results aggregated for management review |
+| PTM history | Full history per child: date · teacher · summary · action items · outcomes · permanently accessible in student profile |
+
+#### PTM Record
+```
+ptm_id              → PTM-NNN
+student_id          → FK
+staff_id            → FK
+date                → Date
+slot                → Time
+notes               → String (meeting notes)
+actions_json        → JSON array: [{action, assigned_to, due_date, status}]
+status              → Scheduled | Completed | Cancelled | No-Show
+```
+
+---
+
+### MODULE 8 — Social Media Marketing Engine
+
+> **World-first differentiator.** No school management software globally includes a marketing engine. This module alone justifies the purchase for most Indian preschool owners.
+
+#### 34 Auto-Personalised Templates
+
+| Category | Count | Notes |
+|----------|-------|-------|
+| Summer Camp | 6 | SC-1 through SC-6 |
+| Admissions Open | 6 | A-1 through A-6 |
+| Parent Testimonials | 6 | T-1 through T-6 |
+| Safety PSA | 6 | S-1 through S-6 |
+| Free Trial | 4 | FT-1 through FT-4 |
+| Content Calendar | 36 posts | April–June 2026 |
+
+**Auto-personalisation:** Every `[bracket]` placeholder in every template is replaced via SUBSTITUTE() formula chain reading from School Profile Named Ranges:
+```
+[School Name]     → SchoolName
+[Tagline]         → SchoolTagline
+[Address]         → SchoolAddress
+[City]            → SchoolCity
+[Phone]           → SchoolPhone
+[WhatsApp]        → SchoolWhatsApp
+[Email]           → SchoolEmail
+[Website]         → SchoolWebsite
+[Instagram]       → SchoolInstagram
+[Principal Name]  → PrincipalName
+[Founded Year]    → FoundedYear
+[Seats]           → SeatsPerBatch
+[Monthly Fee]     → MonthlyFee
+[Camp Fee]        → CampFee
+[Camp Dates]      → CampDates
+[Early Bird Date] → EarlyBirdDate
+[Tour Schedule]   → TourSchedule
+```
+
+**School type adaptation:**
+- Montessori schools see: "prepared environment", "work period", "sensitive periods", "child-led learning"
+- KG schools see: "activity-based learning", "structured curriculum", "unit plans"
+
+#### Birthday Post Template (Separate from 34)
+- Personalised birthday social media post per child
+- Auto-filled: child's first name, age turning, classroom name, school name
+- Triggered from M11 birthday alert
+- One tap to post when birthday alert fires
+- Indian parents screenshot and share — free organic marketing reach
+
+#### AI Image Prompt Library
+- One detailed AI image prompt per template
+- Each prompt specifies: **Indian children, Indian settings, Indian cultural elements** (terracotta pots, marigold flowers, brass vessels, dhurrie mats, kurta/salwar kameez, South Indian mother with bindi, etc.)
+- Paste directly into Canva Magic Media, DALL-E 3, or Midjourney
+- Generates professional culturally appropriate images in 30 seconds
+
+#### Content Calendar Structure (April–June 2026, 36 posts)
+
+Each calendar entry contains:
+```
+date            → e.g. "01 Apr"
+day             → e.g. "Tue"
+month           → e.g. "April 2026"
+platform        → Instagram Feed | Instagram Reels | WhatsApp Status | Facebook
+post_type       → Awareness | Educational | Engagement | Lead Generation | Festival | Testimonial | Safety | Seasonal | Behind the Scenes | Reel/Video
+theme           → Post topic
+template_caption → Caption with [brackets] — reference only, DO NOT EDIT
+your_caption    → SUBSTITUTE() formula output — auto-personalised — COPY THIS TO POST
+hashtags        → Platform-optimised hashtag set
+cta             → Call to action
+canva_size      → e.g. "1080×1080 Carousel (5 slides)"
+ai_image_prompt → Detailed image generation prompt
+status          → Dropdown: Planned | Designing | Scheduled | Published | Skipped
+```
+
+#### Canva Guide (In-App)
+- Brand kit setup instructions (7 steps)
+- 10 post sizes with pixel specifications
+- AI prompt formula — 7-part framework: Subject + Action + Emotion + Setting + Lighting + Art Style + Colour Palette
+- Optimal posting times for Indian preschool parent audience:
+  - Morning window: 7:00–9:00 AM (school drop-off)
+  - Lunch window: 12:00–1:30 PM
+  - Evening window: 7:30–9:30 PM (highest engagement)
+  - Best days: Tuesday, Thursday, Saturday
+- Hashtag strategy — 4 tiers: Broad (5–8) + City-specific (5–8) + Topic-specific (8–10) + Branded (2–3)
+- Monthly posting checklist (12 tasks)
+
+#### Hashtag Generator
+- Input post topic → generate 30 relevant hashtags across all 4 tiers
+- Auto-includes city-specific hashtags from SchoolCity named range
+- One-tap copy to clipboard
+
+#### Testimonial Collection System
+- Per-testimonial WhatsApp collection scripts (exact message to send parent)
+- Consent tracking per family
+- 6 testimonial post templates with auto-fill
+- Video testimonial filming guide and shot list
+
+---
+
+### MODULE 9 — Staff Management
+
+#### Staff Profile
+```
+staff_id            → STF-NNN
+full_name           → String
+role                → Owner | Head Educator | Assistant Educator | Support Staff | ECA Trainer
+qualification       → String
+mntta_cert_number   → String
+mntta_cert_expiry   → Date
+bgv_status          → Pending | Verified | Failed
+bgv_document_ref    → String (Google Drive link)
+aadhaar             → String (optional)
+emergency_contact   → String
+join_date           → Date
+status              → Active | On Leave | Resigned
+bank_name           → String
+account_number      → String (for salary)
+pf_enrolled         → Boolean
+esi_enrolled        → Boolean
+```
+
+#### MNTTA Certification Tracker
+- Cert expiry stored in `mntta_cert_expiry` field
+- AppScript trigger: 60 days before expiry → WhatsApp to owner: `"Ms [Name]'s MNTTA certification expires on [date]. Time to renew! Contact MNTTA at [number]."`
+- "MNTTA Certified" badge displayed on staff profile card
+- **Unique to EduManager Pro — no competitor has this**
+
+#### Teacher Profile (Extended)
+For staff with `role = Head Educator` or `Assistant Educator`:
+```
+classroom_id_primary    → FK: classrooms (primary classroom assignment)
+classroom_id_secondary  → FK: classrooms (for ECA or shared teaching)
+age_groups_qualified    → Array: [Toddler, Primary, Junior, Senior]
+school_type_certified   → Montessori | KG | Both
+teacher_login_email     → String (separate limited-access login)
+```
+**Business rule:** One teacher = one primary classroom as Head. Can be Assistant in multiple classrooms.
+
+#### Substitute Teacher Assignment
+See M4 for full flow. Staff module stores historical substitute assignments:
+```
+sub_id              → SUB-NNN
+date                → Date
+absent_teacher_id   → FK: staff
+substitute_staff_id → FK: staff
+classroom_id        → FK: classrooms
+parent_notified     → Boolean
+```
+
+#### Staff Attendance & Leave
+- Daily check-in/check-out log
+- Leave request form (type + dates + reason)
+- Leave approval by owner
+- Leave balance: CL / PL / SL tracked per Indian labour norms
+- Monthly summary
+
+#### Salary Register
+```
+salary_id           → SAL-NNN
+staff_id            → FK
+month               → String
+basic               → Decimal
+allowances          → Decimal
+gross               → Decimal (auto-calculated)
+pf_deduction        → Decimal (if enrolled)
+esi_deduction       → Decimal (if enrolled)
+other_deductions    → Decimal
+net_payable         → Decimal (auto-calculated)
+paid                → Boolean
+paid_date           → Date
+payment_reference   → String
+```
+- Generate salary slip PDF (auto-filled from school letterhead)
+- WhatsApp salary slip to staff member
+
+#### Appraisal System
+Annual appraisal form with rating criteria:
+- Punctuality (1–5)
+- Parent communication (1–5)
+- Classroom management (1–5)
+- Curriculum delivery (1–5)
+- Professional development (1–5)
+- Overall rating auto-calculated
+- Historical appraisal records per staff member
+
+#### HR Documents
+- Auto-generate offer letter and appointment letter from school letterhead template
+- Download PDF · WhatsApp to staff
+
+---
+
+### MODULE 10 — Curriculum, Learning & Assessment
+
+#### QUICK OBSERVATION — 15-Second Entry (MUST HAVE — Default Mode)
+
+**Business rule:** Observing during a Montessori work period requires silent, non-disruptive logging. The full structured form exists but MUST NOT be the default. Default entry is:
+
+1. Tap child's name
+2. Select material from dropdown (pre-loaded full list by school type)
+3. Select status: `Not Introduced` | `Introduced` | `Practising` | `Mastered`
+4. Optional: 1-line free text note
+5. Tap SAVE — done in 15 seconds
+
+Full detailed observation form available via "Add Full Note" option.
+
+#### Montessori Material Progression Tracker
+
+Five curriculum areas with pre-loaded material lists:
+
+**Practical Life**
+- Pouring (dry) → Pouring (liquid) → Spooning → Tongs → Folding → Buttoning → Zipping → Lacing → Washing hands → Watering plants → Sweeping → Dusting → Setting table → Washing dishes → Food preparation
+
+**Sensorial**
+- Pink Tower → Red Rods → Broad Stair → Cylinder Blocks (Set 1–4) → Colour Boxes (1, 2, 3) → Geometric Solids → Geometric Cabinet → Constructive Triangles → Binomial Cube → Trinomial Cube → Mystery Bag → Smelling Bottles → Tasting Bottles → Sound Cylinders → Thermic Tablets
+
+**Language**
+- Sandpaper Letters (vowels) → Sandpaper Letters (consonants) → Moveable Alphabet → Phonogram Objects → Phonemic Awareness → Reading (3-part cards) → Reading (command cards) → Reading (booklets) → Writing (pre-writing strokes) → Writing (letter formation) → Grammar (noun, article, adjective, verb)
+
+**Mathematics**
+- Number Rods → Sandpaper Numbers → Number and Counters → Spindle Boxes → Golden Bead Material (introduction) → Golden Bead (exchange game) → Teen Boards → Ten Boards → Short Bead Chains → Square and Cube Chains → Addition Strip Board → Subtraction Strip Board → Multiplication Bead Bar → Division Board
+
+**Cultural**
+- Land and Water (globe) → Land and Water (maps) → Puzzle Maps (continent) → Puzzle Maps (country) → Science (animal cards) → Science (plant life cycle) → Science (basic experiments) → Art → Music
+
+**Status per material:** `Not Introduced` | `Introduced` | `Practising` | `Mastered`
+
+> **Note:** Only shown for Montessori school type. KG schools see lesson plan view instead.
+
+#### KG Lesson Plan Template (KG school type only)
+```
+plan_id             → LPL-NNN
+week_start          → Date
+subject             → String
+learning_objective  → String
+activity_description→ String
+materials_needed    → String
+assessment_method   → String
+nep_competency      → String (NEP 2020 ECCE competency link)
+```
+- Print-ready A4 PDF format
+- Weekly calendar view
+
+#### NEP 2020 Alignment
+- Every activity linkable to a NEP 2020 Early Childhood Competency
+- Compliance report showing % coverage of national framework
+- **Unique differentiator for school inspections and parent trust**
+
+#### Child Observation Log (Full Form)
+```
+obs_id              → OBS-NNN
+student_id          → FK
+date                → Date
+concentration_span  → Number (minutes)
+social_interaction  → Dropdown: Solitary | Parallel | Cooperative | Leadership
+independence_level  → Dropdown: Needs Help | Guided | Independent | Mastered
+emotional_state     → Dropdown: Settled | Anxious | Excited | Withdrawn | Distressed
+material_worked     → String (from material dropdown or free text)
+material_status     → Not Introduced | Introduced | Practising | Mastered
+observations        → Free text (1000 chars max)
+```
+
+#### Progress Report / Portfolio
+
+**Montessori (school type = Montessori):**
+- Child Portfolio PDF: compiled from observation log + material progress map + teacher comments
+- Termly generation
+- Professional formatting with school brand kit applied
+
+**Kindergarten (school type = KG):**
+- Traditional report card: subject-wise grades + attendance + teacher comments
+- Term-end generation
+
+Both: Download PDF · WhatsApp to parent at PTM time
+
+#### Monthly Activity Planner
+- Monthly calendar for the classroom
+- Pre-loaded with Indian festival activities (Diwali, Holi, etc.), seasonal themes, Montessori work cycle plans
+- Editable — teacher adds/removes activities
+- Printable PDF for classroom display
+
+---
+
+### MODULE 11 — Events, Activities & School Calendar
+
+#### Monthly Calendar View (GUI — MUST HAVE)
+
+Visual grid of 30/31 days for the current month.
+
+**Colour-coded event dots on each day:**
+- 🔵 Navy dot = School events and announcements
+- 🟣 Purple dot = PTM slots
+- 🟠 Orange dot = ECA batch sessions
+- 🔴 Red dot = Public holidays and school closures
+- 🟡 Gold dot = Fee due dates
+- 🟢 Green dot = Admissions events and Free Trial Days
+
+**Interactions:**
+- Tap any day → Day panel slides up showing all items for that day
+- Navigate: Previous month / Next month arrows
+- Quick-jump to today button
+- Export month view as PDF (for parent/noticeboard distribution)
+
+#### Weekly Calendar View (GUI — MUST HAVE)
+
+7-column grid (Mon–Sun) with time slots from 7:00 AM to 7:00 PM in 30-minute increments.
+
+**Blocks displayed:**
+- Regular school hours: shaded background
+- ECA batch timings: orange blocks with trainer name and activity name
+- PTM slots: purple blocks with parent name
+- Staff scheduled leave: grey blocks
+
+**Filters:** View one classroom at a time or all classrooms combined  
+**Also serves as:** Timetable manager for ECA batch scheduling (see M19)
+
+#### Add Event from Calendar
+- Tap any date or time slot → "Add Event" button
+- Select type: School Event | PTM | ECA Session | Holiday | Other
+- Fill details → Save
+- Appears immediately on calendar
+- Optional WhatsApp notification to relevant parents/teachers
+
+#### Birthday Management — MUST HAVE
+
+**AppScript trigger:** Every morning at 7:00 AM, check `_config` against student `dob` fields.
+
+**If any child has birthday today OR tomorrow:**
+1. Show a prominent birthday banner on the owner's home dashboard: child photo, name, classroom, age turning
+2. One-tap button: **"Send Birthday WhatsApp to Parent"**  
+   Message: `"Happy Birthday to our wonderful [child name]! 🎂 [School Name] wishes [him/her] a magical [age]th birthday! May this year bring joy, learning, and endless wonder. 🌟 — [School Name] Family"`
+3. One-tap button: **"Generate Birthday Social Media Post"** → opens M8 birthday template auto-filled with child's name and age
+
+**Business rule:** Zero missed birthdays is a critical parent goodwill feature. This must be prominent, not buried.
+
+#### Calendar Colour Legend
+Consistent across all calendar views:
+```
+Navy   → School events and announcements
+Purple → PTM meetings  
+Orange → ECA batch sessions
+Teal   → Regular curriculum/lesson activities
+Red    → Public holidays and school closures
+Gold   → Fee due dates and financial reminders
+Green  → Admissions events and Free Trial Days
+```
+
+#### Annual School Calendar
+- Pre-loaded Indian public holidays
+- Add custom school holidays and events
+- Term start/end dates from M1 config
+- Share as PDF or WhatsApp broadcast to all parents
+
+#### Event Planner
+Event types: Annual Day · Sports Day · Graduation · Grandparents Day · Field Trip · PTM · Custom  
+Each event: name + date + checklist template + budget tracker + venue + responsible staff
+
+#### Graduation Ceremony Planner
+- Student list with programme roles assigned
+- Certificate generator: auto-fill student name, school name, year, principal signature placeholder
+- Parent invite letter
+- Links to M8 graduation social media post template
+
+#### Summer Camp Planner (Marketing/Content — Operational camp management in M19)
+- 4-week theme calendar with pre-loaded themes
+- Daily activity plan per week
+- Parent communication templates
+- All links to M8 Summer Camp templates (SC-1 through SC-6)
+
+#### Festival Activity Guides (Pre-loaded)
+Diwali · Holi · Dussehra · Ganesh Chaturthi · Pongal/Sankranti · Independence Day · Republic Day · Teachers Day · Children's Day · Eid · Christmas
+
+#### Google Calendar Sync (Enhanced)
+- All events, PTMs, ECA batches sync to owner's Google Calendar
+- Parent PTM invites include Google Calendar link (add to own calendar in one tap)
+- ECA batch schedule shareable as recurring Google Calendar event for parents
+
+---
+### MODULE 12 — Transport Management
+
+> No competitor — including Procare — has a transport module. 60%+ of Indian preschool children use school transport.
+
+#### Vehicle Register
+```
+vehicle_id          → VEH-NNN
+vehicle_number      → String (e.g. KA01AB1234)
+make_model          → String
+capacity            → Number (seats)
+insurance_expiry    → Date
+fitness_cert_expiry → Date
+driver_id           → FK: transport_drivers
+status              → Active | Inactive
+```
+**Alert:** 30 days before any document expiry → WhatsApp to owner
+
+#### Driver Register
+```
+driver_id           → DRV-NNN
+full_name           → String
+licence_number      → String
+licence_expiry      → Date
+bgv_status          → Pending | Verified | Failed
+police_clearance_ref→ String (document reference)
+phone               → String
+emergency_contact   → String
+assigned_route_id   → FK
+status              → Active | Inactive
+```
+
+#### Route Planner
+- Named routes (e.g. "Indiranagar Route", "HSR Layout Route")
+- Stops in sequence with landmark descriptions and estimated arrival times
+- Assigned vehicle and driver per route
+
+#### Student Bus Assignment
+- Assign each student to route and stop
+- View all students on each route (roster per vehicle)
+- Print daily pickup list per vehicle (PDF)
+
+#### Transport Fee
+- Separate fee head from tuition (managed in M5)
+- Monthly collection log
+- Receipt generation via M5 receipt generator
+- Outstanding transport fee tracker
+- Exemption flag per student
+
+#### WhatsApp Route Updates (Pre-built Templates)
+- `"Bus has departed [School Name] and will reach [Stop Name] at approx. [Time]"`
+- `"Bus delayed approximately [N] minutes due to [reason]. Revised arrival at [Stop]: [Time]"`
+- `"Bus has reached [Stop Name]. Please come to collect [child name]."`
+- One-tap send by owner or designated staff member
+
+#### Document Expiry Dashboard
+All vehicle and driver documents in one view:
+- 🟢 Green = Valid
+- 🟡 Amber = Expiring within 30 days
+- 🔴 Red = Expired
+WhatsApp alert to owner when status changes to Amber.
+
+---
+
+### MODULE 13 — Safety & Compliance
+
+| Feature | Requirement |
+|---------|-------------|
+| Visitor log | visitor_id · name · purpose · contact · entry_time · exit_time · person_met · ID type verified. Daily visitor PDF report printable. |
+| POCSO compliance | Staff POCSO awareness checklist · staff acknowledgement form (digital signature stored) · mandatory reporting SOP · body safety policy template (auto-inserted in M15 Parent Handbook) · safe environment audit checklist |
+| Fire safety log | Termly drill schedule · date of last drill · evacuation time recorded · issues noted · extinguisher inspection log (monthly) · next service due date |
+| CCTV audit log | Coverage confirmation checklist · last recording review date · storage duration confirmed · camera malfunction log |
+| Accident/incident report | Structured form: date/time · child involved · description · action taken · parent notification time · medical treatment given · follow-up required. Printable PDF for records. |
+| Medical emergency SOP | Step-by-step emergency response procedure · emergency contacts pre-filled with nearest hospitals from SchoolCity · poison control · ambulance |
+| Authorised pickup enforcement | Shows authorised list photo + name when logging pickup (see M4 pickup log). Alert if attempted release to unauthorised person. |
+| Safety PSA post templates | 6 India-specific posts in M8 social media engine: School Safety (8-point commitment) · Monsoon Water Safety · Road Safety · Diwali Fire Safety · Body Safety (POCSO-aware) · Digital Screen Safety |
+
+---
+
+### MODULE 14 — Reports & Analytics Dashboard
+
+#### Homepage Executive Dashboard (Always Visible)
+
+**TODAY card:**
+- Attendance % with one-tap shortcut to mark attendance
+- Fees collected this month vs target (progress bar)
+- Next event with date and countdown
+- Posts published this month vs target-12
+
+**BIRTHDAY ALERT (conditional — from M11):**
+- Shows ONLY if any child has birthday today or tomorrow
+- Large warm card with child photo, name, classroom, age turning
+- One-tap: Send Birthday WhatsApp · One-tap: Generate Birthday Post
+
+**POST TODAY card:**
+- Today's suggested social media post from M8 content calendar
+- Caption preview (first 3 lines)
+- One-tap copy to clipboard
+- "Open in Canva" link
+
+**QUICK ADD button (always visible):**
+- Floating "+" button — one tap → 4-field lead capture
+
+**FOLLOW UP card:**
+- Leads not contacted in 48 hours (count + list)
+- Students with overdue fees (count)
+- Documents expiring within 30 days (count)
+
+#### Enrolment Analytics
+- Current enrolment by batch and age group
+- Occupancy % per batch (capacity bar)
+- Monthly enrolment trend (line chart)
+- Batch capacity utilisation
+- Year-on-year comparison
+
+#### Fee Analytics
+- Collected vs expected per month (bar chart)
+- Outstanding amount (total and per student)
+- Defaulter count
+- Revenue by fee head (pie chart)
+- Annual revenue chart
+- Quarterly/annual plan due-date tracking
+
+#### Attendance Analytics
+- School-wide % per day/week/month
+- Students below 75% attendance (flagged list)
+- Health screening summary: sent-home count per month
+- Staff attendance summary
+
+#### ECA Revenue Analytics
+- ECA collected vs expected
+- Per-activity revenue breakdown
+- Trainer cost vs revenue
+- Net ECA profit monthly
+- Occupancy % per batch
+
+#### Marketing Analytics
+- Posts published vs target (this month)
+- Enquiries received by source (Instagram/Facebook/WhatsApp/Referral/Walk-in)
+- Lead-to-enrolment conversion rate
+- Free Trial Day conversion rate
+- CRM pipeline stage distribution
+
+#### Annual School Report
+Year-end comprehensive report:
+- Total enrolment (peak and current)
+- Total fee collected
+- Average attendance %
+- Staff headcount
+- Events conducted
+- Social media posts published
+- Safety drills completed
+- ECA programmes and revenue
+- Download professionally formatted PDF
+
+#### Custom Report Builder
+- Select any combination of metrics
+- Set date range
+- Filter by batch or classroom
+- Generate → Download PDF or CSV
+
+---
+
+### MODULE 15 — Parent Handbook Generator
+
+> Auto-generates a complete professionally formatted Parent Handbook PDF from School Profile data in one click. No competitor offers this. Every new parent receives a personalised handbook on admission day — builds immediate trust and sets professional expectations.
+
+#### Auto-Generated Sections
+
+**Section 1 — School Identity**
+- School name, logo, tagline, address, contact details (all from M1 School Profile)
+- Principal's welcome message (editable template)
+- School philosophy (auto-adapted to school type: Montessori text or KG text)
+- MNTTA certification note (if MNTTA school)
+- Year established
+
+**Section 2 — Academic Information**
+- Academic year calendar (from M1 config)
+- Daily routine schedule (editable template)
+- Curriculum overview (auto-adapted to school type)
+- Assessment and reporting approach
+
+**Section 3 — School Policies**
+- Attendance policy (minimum 75% required)
+- Punctuality expectations
+- Holiday procedure (how to inform school)
+- Medication administration policy (references M2 medication log procedure)
+- Allergy management policy
+- School closure communication procedure
+
+**Section 4 — Safety Policies**
+- Gate safety procedure
+- Authorised pickup rules (references M2 pickup list)
+- Visitor policy
+- CCTV notice (legal disclosure)
+- Emergency procedure summary
+- POCSO body safety note for parents
+
+**Section 5 — Fee Schedule**
+- Fee structure and all heads
+- Payment plan type (from student enrolment record — Monthly/Quarterly/Annual)
+- Payment modes accepted: UPI, NEFT, Cash, Cheque
+- Late payment policy
+- Refund policy
+
+**Section 6 — Transport Information**
+- Available routes and stops
+- Drop-off and pickup times
+- Driver contact information
+- Route update WhatsApp group instructions
+
+**Section 7 — Parent Involvement**
+- PTM schedule (term dates)
+- Parent volunteer opportunities
+- Classroom observation policy
+- Communication channels (WhatsApp, email, in-person)
+
+**Section 8 — FAQ**
+- 20 most common new-parent questions (answers auto-adapted to school type)
+- Owner can add custom Q&As
+
+#### Output Options
+- Download professionally formatted PDF with school branding (logo + colours applied)
+- WhatsApp to parent on admission day
+- Print option (A4 format)
+- Re-generate at any time after School Profile changes
+
+---
+### MODULE 16 — Staff CPD & Training Log (Simplified)
+
+> Scope limited to CPD log and MNTTA certification tracking. Full MNTTA trainee cohort management is an MNTTA internal product, not a preschool owner tool, and is excluded from this PRD.
+
+| Feature | Requirement |
+|---------|-------------|
+| MNTTA cert expiry tracker | Staff certification number + expiry date · 60-day pre-expiry WhatsApp alert to owner · "MNTTA Certified" badge on staff profile |
+| CPD training log | Record training per staff: workshop name · date · provider · certificate upload (Drive link) · CPD hours · type (External/Internal/MNTTA Workshop) |
+| Internal training calendar | Schedule in-house sessions · attendance register · notes field |
+| Training summary report | Annual CPD hours per staff member · MNTTA cert status across all staff · training budget vs actual |
+
+---
+
+### MODULE 17 — Integrations & Automation
+
+#### GoHighLevel CRM Sync
+- All admissions leads auto-sync to GoHighLevel pipeline via n8n webhook
+- Two-way status update between EduManager Pro and GoHighLevel
+- Pro Setup tier includes full GHL configuration by MNTTA team
+
+#### n8n Automation Workflows (Pre-built, 8 Workflows)
+
+| # | Trigger | Action |
+|---|---------|--------|
+| 1 | Student attendance check-in | WhatsApp to parent: arrival confirmation |
+| 2 | Fee due date reached (plan-aware) | WhatsApp to parent: fee reminder |
+| 3 | Lead status unchanged for 48 hours | WhatsApp to owner: follow-up nudge |
+| 4 | Trial completed + not enrolled in 3 days | WhatsApp to parent: follow-up message |
+| 5 | Birthday check at 7:00 AM | WhatsApp birthday template to owner + dashboard alert |
+| 6 | Student health-screened as Sent-Home | WhatsApp to parent: health alert |
+| 7 | Teacher marked absent | WhatsApp to owner: substitute assignment needed |
+| 8 | ECA batch capacity reaches 5 seats remaining | M8 urgency post template auto-generated in social media engine |
+
+#### WhatsApp Business API
+- WABA-compliant templates (all pre-approved message formats)
+- Message delivery receipts
+- Opt-in/opt-out management per parent
+- High-volume broadcast support (100+ recipients)
+
+#### Google Calendar Sync
+- School events, PTM appointments, ECA batches → owner's Google Calendar
+- Parent PTM invites include Google Calendar link (parents add to their calendar in one tap)
+- ECA batch schedule shareable as recurring Google Calendar event
+
+#### Tally CSV Export
+- Fee collection monthly export in Tally-compatible CSV format
+- Eliminates double-entry for accountant
+- Auto-generate on 1st of each month or on-demand
+
+#### Inbound Webhooks
+- Facebook Lead Form → CRM Quick Add (auto-creates lead record)
+- Google Form → Student enrolment (auto-creates student profile)
+- New web enquiry → Auto-acknowledgement WhatsApp to parent: `"Hi [name]! Thank you for your enquiry about [School Name]. We'll call you within 24 hours. — [Principal Name], [Phone]"`
+
+---
+### MODULE 18 — Classroom & Teacher Management
+
+#### Create Classroom
+```
+classroom_id        → CLS-NNN
+name                → String (e.g. "Sunflower Room", "Blue Room", "Room 1")
+type                → Montessori Primary | Montessori Casa | KG Nursery | KG LKG | KG UKG
+capacity            → Number (max students)
+current_occupancy   → Auto-calculated from classroom_students tab
+head_teacher_id     → FK: staff (role must be Head Educator or Assistant Educator)
+asst_teacher_id     → FK: staff (optional)
+school_type         → Montessori | KG (inherited from M1 config)
+status              → Active | Inactive
+```
+
+#### Classroom List View (Dashboard)
+Each classroom shown as a card:
+- Room name + type badge
+- Head teacher name
+- Live occupancy bar: `[████████░░] 18/25 — 72%`
+  - 🟢 Green: under 80%
+  - 🟡 Amber: 80–95%
+  - 🔴 Red: over 95% or over capacity
+- Quick actions: "View Students" | "Assign Teacher" | "Mark Attendance"
+
+#### Assign Teacher to Classroom
+- From classroom screen: Select classroom → Assign Head Teacher (dropdown of staff with `role = Head Educator`) → Assign Assistant Teacher (optional) → Save
+- **Business rule:** One teacher can be Head of only ONE classroom. A teacher can be Assistant in multiple classrooms (shared teaching).
+- Historical assignment log: when teacher changes, previous assignment recorded with effective date
+
+#### Assign Child to Classroom — Three Methods
+
+**Method 1 — At Enrolment:**
+- During M3 admission flow, classroom selected from available rooms matching child's age group
+- Classroom occupancy auto-updates
+
+**Method 2 — Bulk Assignment:**
+- Owner selects multiple enrolled students from a batch
+- Assigns all selected students to a classroom in one action
+- Useful for new batch start in June or January
+
+**Method 3 — Individual Transfer:**
+- Move a child from one classroom to another at any time
+- Requires: target classroom, transfer date, reason
+- Transfer history maintained per child in `classroom_students` tab
+- Classroom occupancy auto-updates for both source and destination classrooms
+
+#### Classroom Roster View
+Within each classroom:
+- List of all enrolled students with photo, name, age
+- Parent WhatsApp number for each student (quick-tap to contact)
+- Today's attendance status per student
+- ECA activities each student is enrolled in
+- Quick actions: "Mark Attendance" | "WhatsApp All Parents" | "View Portfolio"
+
+#### Staff-to-Child Ratio Monitoring
+After every classroom assignment, system checks ratio:
+- Montessori: alert if ratio exceeds 1:8 children per teacher
+- KG: alert if ratio exceeds 1:12 children per teacher
+
+Alert: `"⚠️ Sunflower Room has 24 children and 2 teachers (1:12 ratio — at limit). Consider adding another educator."`
+
+Ratio dashboard on homepage shows all classrooms colour-coded.
+
+#### Classroom Schema Tabs
+```
+classrooms tab:      classroom_id · name · type · capacity · head_teacher_id · asst_teacher_id · school_type · status
+classroom_students:  cs_id · classroom_id · student_id · assigned_date · transferred_from · transfer_reason
+```
+
+---
+
+### MODULE 19 — Extra-Curricular Activities (ECA) Revenue Engine
+
+> Post-school-hour activities represent ₹2,000–₹5,000 per child per month in additional revenue. A 50-student school running 3 ECA programmes can generate ₹1.5–₹2.5 lakhs/month additional revenue — entirely separate from tuition fees.
+
+#### 19.1 Activity & Batch Setup
+
+##### Create ECA Activity
+```
+eca_id              → ECA-NNN
+name                → String (e.g. "Bharatanatyam Dance", "Keyboard Music", "Karate", "Watercolour Art", "Yoga", "Abacus Maths")
+category            → Performing Arts | Martial Arts | Visual Arts | Academic | Sports | Wellness | Other
+description         → String (shown on parent-facing info)
+suitable_age_groups → Array (e.g. ["3-4 years", "4-5 years", "5-6 years"])
+status              → Active | Paused | Seasonal
+```
+
+##### Create ECA Batch
+```
+batch_id            → BCH-NNN
+eca_id              → FK: eca_activities
+batch_name          → String (e.g. "Monday Batch", "Advanced Group", "Age 4-5 Batch")
+trainer_id          → FK: eca_trainers
+classroom_id        → FK: classrooms (room shared after school hours)
+days_of_week        → Array: [Mon, Tue, Wed, Thu, Fri, Sat]
+time_slot_start     → Time
+time_slot_end       → Time
+start_date          → Date
+end_date            → Date (or null for ongoing)
+max_students        → Number
+fee_per_month       → Decimal (₹)
+status              → Active | Completed | Cancelled
+```
+
+**Conflict detection:** If trainer or classroom is already assigned to another batch at the same time on the same day → show alert at batch creation. Do not allow save without resolution.
+
+#### 19.2 ECA Trainer Management
+
+##### External Trainer Profile
+```
+trainer_id          → TRN-NNN
+full_name           → String
+specialisation_csv  → Comma-separated (e.g. "Bharatanatyam, Kuchipudi")
+phone               → String
+whatsapp            → String
+email               → String
+contract_type       → Per Session | Monthly Retainer | Revenue Share %
+rate                → Decimal (₹ per session OR ₹ per month OR % of fee collected)
+bgv_status          → Pending | Verified | Failed
+active              → Boolean
+```
+**Note:** ECA trainers are separate from regular school staff. They are typically part-time, external, or contract-based. Do NOT mix with M9 staff records.
+
+##### Trainer Payment Tracker
+- Sessions delivered this month × per-session rate (if Per Session contract)
+- Monthly retainer amount (if Monthly Retainer contract)
+- Amount paid this month
+- Outstanding balance
+- Payment history with UPI/cash reference
+- **Separate from M9 staff salary module**
+
+##### Trainer Timetable View
+- Visual weekly timetable per trainer showing all assigned batches
+- Conflict detection: if trainer assigned to two batches at same time → alert at batch creation
+
+#### 19.3 ECA Enrolment Management
+
+##### Enrol Student in ECA
+```
+enrol_id            → ENL-NNN
+batch_id            → FK: eca_batches
+student_id          → FK: students
+enrolment_date      → Date
+status              → Active | Paused | Withdrawn
+```
+**Pre-enrolment checks:**
+1. Student's age is within suitable_age_groups for this ECA activity
+2. Batch is not at maximum capacity
+3. No timing conflict with another ECA batch the student is already in
+
+##### Enrolment Confirmation WhatsApp
+Auto-sent on enrolment:  
+`"[Child name] is now enrolled in [Activity Name] at [School Name]! 🎉 Batch: [Days] at [Time]. First session: [Date]. Monthly fee: ₹[Amount]. We look forward to seeing [him/her]! — [School Name] ([Phone])"`
+
+##### Batch Roster View
+- List of enrolled students with parent WhatsApp numbers
+- One-tap batch WhatsApp: `"Tomorrow's [Activity] session is confirmed at [time]. See you there! 🎵 — [School Name]"`
+- Separate ECA attendance per session (trainer marks for their batch)
+
+##### Student ECA Summary
+In each student's profile — "ECA Activities" tab:
+- All enrolled activities with batch name, trainer, timing, fee, status
+- Total monthly ECA fee for this student (shown alongside tuition fee)
+- Enrolment history including completed and withdrawn activities
+
+#### 19.4 ECA Fee Management
+
+**Key rule:** ECA fees are **completely separate** from tuition fees. Separate collection, separate receipts, separate records. Optional: owner can enable "combined receipt mode" to issue one receipt for tuition + ECA together.
+
+##### ECA Fee Collection
+For each active ECA batch → list of enrolled students → payment status for current month:
+- Mark paid: record mode (UPI/Cash/Cheque) + reference
+- Auto-generate ECA receipt PDF: school name · student name · activity name · batch name · month · amount · mode · reference · trainer name
+- WhatsApp receipt to parent immediately
+
+##### ECA Fee Reminder
+AppScript trigger on 1st of each month:  
+WhatsApp to parents with unpaid ECA fees: `"Hi [Parent name], [Child name]'s [Activity Name] fee of ₹[Amount] for [Month] is due. Pay via UPI: [UPI ID] or call [Phone]. Thank you! — [School Name]"`
+
+##### ECA Defaulter Tracker
+- Dashboard: outstanding ECA fees by student and activity
+- Separate from tuition defaulter view in M5
+- Owner can pause enrolment for 2+ months unpaid:
+  - Status set to `Paused`
+  - Auto-WhatsApp to parent: `"[Child name]'s [Activity] enrolment has been temporarily paused due to outstanding fees of ₹[Amount]. Please contact us at [Phone] to resume. — [School Name]"`
+
+#### 19.5 ECA Revenue Dashboard & Reporting
+
+| Report | Content |
+|--------|---------|
+| Monthly ECA revenue card (homepage) | Total collected vs expected · per-activity breakdown · trainer cost · net ECA profit |
+| ECA occupancy report | Capacity vs enrolment per batch · occupancy % · waitlist count · month-on-month trend · low-occupancy batches flagged |
+| Combined school revenue | Tuition + ECA + Transport total · breakdown chart · YTD comparison · projected annual ECA revenue |
+
+#### 19.6 Summer Camp as Special ECA Programme
+
+Summer Camp is managed as a special time-bound ECA programme in M19 (marketing templates for Summer Camp are in M8):
+
+```
+Camp name           → e.g. "Summer Camp 2026"
+Start date / End date
+Daily time slot     → e.g. 9:00 AM – 1:00 PM
+Age group           → e.g. "3–8 years"
+Maximum students    → e.g. 25
+Fee                 → ₹ per camp (full duration, not monthly)
+Status              → Active | Completed | Cancelled
+```
+
+**Week-by-week theme planner (pre-loaded):**
+- Week 1: Around the World — Passports, flags, cultural dance, world cuisine
+- Week 2: Little Scientists — Volcano, rainbow jar, magnets, shadow science
+- Week 3: Arts & Culture — Warli art, clay sculpture, puppet show, drama
+- Week 4: Nature Warriors — Seed planting, composting, nature walk, recycled art
+
+**Daily activity plan per week:**  
+Activity name · materials needed · responsible trainer/teacher
+
+**Summer Camp Certificate Generator:**
+- Auto-generate PDF participation certificate per child
+- Auto-filled: student name, camp name, school name, dates, school logo
+- Download PDF · WhatsApp to parent on final day
+
+---
+
+## 5. Data Architecture — Google Sheets Schema
+
+> One workbook per school. 28 tabs total. All tabs hidden via `sheet.hideSheet()` at deployment. All data access via AppScript DAL only — never direct Sheet interaction by any user. Named Ranges for all `_config` fields. Soft deletes only — never `sheet.deleteRow()`.
+
+### 5.1 Complete Tab Listing
+
+| Tab Name | Type | Key Columns | Protection |
+|----------|------|-------------|------------|
+| `_config` | Config | key · value (22 rows — all Named Ranges: SchoolName, SchoolPhone, CampDates, etc.) | Full |
+| `_audit_log` | System | timestamp · user_role · action · table · row_id · field · old_val · new_val | Append-only |
+| `_deleted` | Recovery | original_table · original_row_id · full_row_json · deleted_by · deleted_at · restored | Append-only |
+| `_backup_log` | System | backup_id · timestamp · type (daily/weekly) · rows · status · destination | Append-only |
+| `_licence` | System | school_id · plan_tier · purchase_date · payment_ref · upgrade_history_json · support · active | Full |
+| `students` | Data | student_id · name · dob · age · batch_id · classroom_id · fee_plan_type · status · deleted · deleted_at | Full |
+| `families` | Data | family_id · student_id · parent1 · parent2 · guardian · primary_phone · whatsapp · email · pickup_list_json | Full |
+| `medical` | Data | medical_id · student_id · allergies_json · conditions · medications · doctor · hospital · vacc_record | Full |
+| `med_log` | Data | log_id · student_id · date · medicine · dose · time_given · given_by_staff_id · parent_instruction | Full |
+| `attendance` | Data | att_id · student_id · date · status · check_in_time · health_status · health_temp · marked_by | Full |
+| `pickup_log` | Data | pickup_id · student_id · att_id · collector_name · relationship · time · verified · staff_id | Full |
+| `health_screen` | Data | screen_id · student_id · date · temperature · status · sent_home · notes · recorded_by | Full |
+| `fees` | Data | fee_id · student_id · month · fee_head · amount · plan_type · mode · upi_ref · paid_at · receipt_no | Full |
+| `leads` | Data | lead_id · parent_name · child_age · source · status · last_contact · batch_target · notes | Full |
+| `staff` | Data | staff_id · name · role · classroom_id · mntta_cert · cert_expiry · bgv_status · join_date · status | Full |
+| `classrooms` | Data | classroom_id · name · type · capacity · head_teacher_id · asst_teacher_id · school_type · status | Full |
+| `classroom_students` | Data | cs_id · classroom_id · student_id · assigned_date · transferred_from · transfer_reason | Full |
+| `ptm` | Data | ptm_id · student_id · staff_id · date · slot · notes · actions_json · status | Full |
+| `transport` | Data | transport_id · vehicle_no · driver_id · route · student_ids_csv · fee | Full |
+| `safety_log` | Data | log_id · type (visitor/drill/incident) · date · details · action_taken · resolved | Full |
+| `curriculum` | Data | curr_id · student_id · material_name · area · status · introduced · mastered · notes | Full |
+| `communications` | Data | comm_id · type · recipient_ids_csv · channel · sent_at · content_ref · status | Full |
+| `events` | Data | event_id · name · date · type · checklist_ref · budget · status | Full |
+| `eca_activities` | Data | eca_id · name · category · age_group · description · status | Full |
+| `eca_batches` | Data | batch_id · eca_id · trainer_id · classroom_id · days · time · capacity · fee · start · end · status | Full |
+| `eca_enrolments` | Data | enrol_id · batch_id · student_id · enrol_date · status | Full |
+| `eca_fees` | Data | fee_id · enrol_id · month · amount · mode · reference · paid_at · receipt_no | Full |
+| `eca_trainers` | Data | trainer_id · name · specialisation_csv · phone · contract_type · rate · bgv_status · active | Full |
+
+### 5.2 AppScript DAL — 10 Mandatory Coding Rules
+
+1. **Every read and write routes through AppScript DAL functions** — `getStudents()`, `addFeeRecord()`, `markAttendance()` etc. Never call `sheet.getRange().setValue()` directly from UI handlers.
+
+2. **Every write appends to `_audit_log`:** `timestamp | user_role | action (INSERT/UPDATE/DELETE) | table_name | row_id | field_changed | old_value | new_value`
+
+3. **Every row has a unique auto-generated ID in Column A** — format: `PREFIX-YYYYMMDD-NNN` (e.g. `STU-20260615-001`). Never use row numbers as identifiers. Row numbers change when rows are sorted.
+
+4. **Soft deletes only** — `deleteRecord()` sets `deleted = TRUE` and `deleted_at = timestamp`, then moves the complete row as a JSON snapshot to the `_deleted` tab. Never call `sheet.deleteRow()`.
+
+5. **No formulas in data tabs** — raw values only. All calculations (age from DOB, fee totals, attendance %) in AppScript code. Sheets store computed results as plain values.
+
+6. **No merged cells in any data tab** — merged cells break `sheet.getValues()` and all CSV exports. Merged cells only allowed in `_config` for visual display, read via Named Ranges only.
+
+7. **Continuous data from Row 2** — Row 1 is always the header row. Data is continuous with no empty rows. AppScript uses `sheet.getLastRow()` to find append position. Empty rows break `getLastRow()`.
+
+8. **Foreign keys enforced in AppScript before every write** — before inserting a fee record, verify `student_id` exists in `students` tab. Before deleting a student, check for linked records and prompt owner for confirmation.
+
+9. **All tabs hidden at deployment** — `sheet.hideSheet()` on every data tab. Owner sees only a blank Google Sheets file if they navigate to the URL. The web app is the only interface.
+
+10. **`LockService.getScriptLock()` with 10-second timeout before every write** — prevents concurrent access corruption when two users submit forms simultaneously.
+
+### 5.3 Row ID Format Reference
+
+| Table | Prefix | Example |
+|-------|--------|---------|
+| students | STU | STU-20260615-001 |
+| families | FAM | FAM-20260615-001 |
+| medical | MED | MED-20260615-001 |
+| med_log | MLG | MLG-20260615-001 |
+| attendance | ATT | ATT-20260615-001 |
+| pickup_log | PKP | PKP-20260615-001 |
+| health_screen | HSC | HSC-20260615-001 |
+| fees | FEE | FEE-20260615-001 |
+| leads | LED | LED-20260615-001 |
+| staff | STF | STF-20260615-001 |
+| classrooms | CLS | CLS-20260615-001 |
+| classroom_students | CST | CST-20260615-001 |
+| ptm | PTM | PTM-20260615-001 |
+| eca_activities | ECA | ECA-20260615-001 |
+| eca_batches | BCH | BCH-20260615-001 |
+| eca_enrolments | ENL | ENL-20260615-001 |
+| eca_fees | ECF | ECF-20260615-001 |
+| eca_trainers | TRN | TRN-20260615-001 |
+
+---
+
+## 6. Technical Architecture
+
+### 6.1 V1 — Google AppScript + HTML/CSS/JS (BUILD THIS FIRST)
+
+| Component | Specification |
+|-----------|--------------|
+| **Frontend** | HTML/CSS/JavaScript served via AppScript `HtmlService`. Mobile-first responsive design (375px baseline). Deployed as Web App from Google Drive. Owner bookmarks the URL. Target load time: under 3 seconds on Indian 4G. |
+| **Backend / Database** | Google Sheets as structured database (28 tabs per school). AppScript handles all business logic, validation, and automation. Named Ranges for all School Profile fields. |
+| **Authentication** | Google OAuth for school owner (full access). Teacher limited login: separate AppScript deployment with role-based access — attendance and observations only, no access to fees, CRM, or management data. |
+| **Automation** | AppScript time triggers: fee reminders (plan-due-date-aware) · attendance alerts (9:30 AM) · birthday check (7:00 AM) · document expiry alerts (30 days) · backup (2:00 AM). n8n webhooks: GoHighLevel sync · WhatsApp API · Google Calendar. |
+| **Infrastructure cost** | ₹0/month for school data (Google Drive free tier: 15GB per account covers 500+ schools). MNTTA infrastructure cost for V1: ₹0/month. |
+| **Scalability limit** | AppScript 6-minute execution limit · Sheets 10M cell limit · LockService for concurrent writes (safe up to 5–10 simultaneous users). V2 migration triggered when: (a) school exceeds 300 active students, OR (b) more than 5 concurrent users, OR (c) AppScript timeouts occurring 3+ times/week. |
+
+### 6.2 V2 — React + Supabase (Build After 50 Paying Customers)
+
+| Component | Specification |
+|-----------|--------------|
+| **Frontend** | React.js + Tailwind CSS · Progressive Web App (PWA) · Installable on Android/iOS home screen without App Store · Offline-capable for attendance and fee entry |
+| **Backend** | Supabase (PostgreSQL + Auth + Storage + Realtime) · Row-level security for multi-tenancy · Each V1 Sheet tab maps directly to a Supabase table — zero data transformation on migration |
+| **Mobile app (V3)** | React Native · Android first (85%+ of Indian school owners use Android) · Biometric login |
+
+### 6.3 Startup Licence Check
+
+```javascript
+function doGet() {
+  const tier = getLicenceTier();
+  const schoolType = getSchoolType();
+  const template = HtmlService.createTemplateFromFile('Index');
+  template.planTier = tier;
+  template.schoolType = schoolType;
+  return template.evaluate()
+    .setTitle('EduManager Pro')
+    .addMetaTag('viewport', 'width=device-width, initial-scale=1')
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+}
+
+function getLicenceTier() {
+  const sheet = SpreadsheetApp.getActive().getSheetByName('_licence');
+  return sheet.getRange('B2').getValue(); // early_bird | standard | pro
+}
+
+function getSchoolType() {
+  const config = SpreadsheetApp.getActive().getSheetByName('_config');
+  return config.getRange('SchoolType').getValue(); // Montessori | KG
+}
+```
+
+---
+
+## 7. GUI Design System & UX Requirements
+
+### 7.1 Core Design Principles (Non-Negotiable)
+
+| Principle | Requirement |
+|-----------|-------------|
+| **One task per screen** | Each screen solves one problem. One primary action button maximum. No cross-module clutter on a single screen. |
+| **Three-tap rule** | Any core task must be completable in exactly 3 taps or fewer. If more, redesign the flow before building it. |
+| **Default to most common action** | Attendance: opens with All Present. Lead form: opens with Quick Add 4-field version. Observation: opens Quick 15-second entry. |
+| **Zero jargon** | No "CRM", no "pipeline", no "module", no "DAL". Every label is a plain action in the user's language: "Today's Attendance", "WhatsApp to Parents", "Add Enquiry". |
+| **Mobile-first** | 375px width is the design baseline. Every screen usable with one hand on a phone. Desktop is secondary. |
+| **Forgiving interface** | All deletes are soft-delete (recoverable for 30 days). Autosave every 30 seconds. Confirmation dialog required before any destructive action. |
+| **WhatsApp-native** | Every "Send to Parent" action defaults to WhatsApp. Always preview the message before sending. Email is always a secondary option. |
+| **Indian cultural context** | Warm colours (saffron, teal, marigold). Indian children illustrations throughout. DD/MM/YYYY date format everywhere. ₹ currency symbol everywhere. Name fields support Devanagari, Kannada, Tamil, Telugu scripts via Noto Sans font. |
+### 7.2 Bottom Navigation Bar — 5 Tabs (Always Visible)
+
+```
+Home        → Daily dashboard
+School      → Students · Classrooms · Attendance · Fees · Staff · Transport · Safety
+Parents     → WhatsApp · Photos · Circulars · PTM · Handbook · eConsents
+Marketing   → Social media engine · Content calendar · Admissions CRM · ECA promotions
+Reports     → Analytics · Fee reports · Attendance · ECA · Annual report
+```
+
+### 7.3 Homepage — Daily Command Centre
+
+**TODAY card (always shown):**
+- Live attendance % with one-tap shortcut to mark
+- Fees collected this month vs target (progress bar with ₹ amounts)
+- Next event with date countdown
+- Posts published this month vs target of 12
+
+**BIRTHDAY ALERT (shown only when relevant):**
+- Large warm-coloured card with child photo, name, classroom, age turning
+- Button 1: "Send Birthday WhatsApp to Parent" (one tap)
+- Button 2: "Generate Birthday Social Media Post" (one tap → M8)
+
+**POST TODAY card:**
+- Today's suggested social media post from M8 content calendar
+- First 3 lines of caption as preview
+- "Copy Caption" button (copies auto-personalised version to clipboard)
+- "Open in Canva" link
+
+**QUICK ADD floating button (always visible, bottom-right):**
+- Visible on EVERY screen at all times
+- Opens 4-field lead capture form in a bottom sheet
+- Fields: Parent Name · Phone · Child Age · Source dropdown
+- Save creates lead in M3 CRM
+
+**FOLLOW UP card:**
+- Leads not contacted in 48 hours: count + top 3 names
+- Students with overdue fees: count
+- Documents expiring within 30 days: count
+
+### 7.4 Colour System
+
+| Token | Hex | Usage |
+|-------|-----|-------|
+| Primary | `#148F77` | Action buttons, active nav, section headers |
+| Secondary | `#1A3A5C` | Page titles, important text, data labels |
+| Accent | `#B7950B` | Alerts, badges, highlights, early-bird labels |
+| Background | `#FAFAFA` | App background (warm white — not pure white) |
+| Text Primary | `#2C3E50` | All body text |
+| Text Secondary | `#7F8C8D` | Labels, hints, secondary info |
+| Success fill | `#D5F5E3` | Paid, Present, Published states |
+| Success text | `#1E8449` | Text on success backgrounds |
+| Warning fill | `#FEF9E7` | Due, Expiring, Pending states |
+| Warning text | `#B7950B` | Text on warning backgrounds |
+| Danger fill | `#FADBD8` | Absent, Overdue, Expired states |
+| Danger text | `#922B21` | Text on danger backgrounds |
+| Light blue | `#D6EAF8` | Info backgrounds, selected items |
+| Light purple | `#F4ECF7` | Social media module accents |
+
+**Typography:** Noto Sans (supports Devanagari/Kannada/Tamil/Telugu)
+- 28px: Page/screen titles
+- 20px: Section titles  
+- 16px: Body text
+- 13px: Labels and captions
+- 11px: Hints and footnotes
+
+### 7.5 Onboarding — 5-Minute Setup Flow (Sequential Steps)
+
+```
+Step 1 (30s): Enter school name + city + phone + WhatsApp
+              → Fills immediately across all screens and templates
+
+Step 2 (20s): Select school type: Montessori or Kindergarten
+              → UI adapts instantly (templates, curriculum, reports)
+
+Step 3 (30s): Upload school logo
+              → Appears immediately in Parent Handbook preview and brand kit
+
+Step 4 (30s): Enter current batch name + start date + max seats
+              → Admissions CRM becomes ready to use
+
+Step 5 (60s): Preview first auto-personalised social media post
+              → Copy caption → first social media post ready to publish
+
+Step 6 (60s): Add 3 students
+              → Appear simultaneously in attendance, fee management, and profiles
+```
+
+**After onboarding:** Personalised "Your school is ready" summary screen showing:
+- ✅ 6 setup steps completed
+- 3 suggested first actions (e.g. "Mark today's attendance", "Add your first enquiry", "Post today's social media content")
+
+---
+
+## 8. Build Sequence & Phase Plan
+
+| Phase | Timeline | Deliverables | Revenue Target |
+|-------|----------|-------------|----------------|
+| **Phase 1 — MVP** | Weeks 1–4 | M1 School Profile web form · M3 Admissions CRM with Quick Add button · M8 Social Media Engine with 34 auto-personalised templates · Complete 28-tab Google Sheet schema · 5-layer data protection · Deploy as AppScript Web App · Launch Early Bird ₹7,990 | ₹3.99L (50 buyers) |
+| **Phase 2 — Ops Core** | Weeks 5–10 | M2 Student Profiles + Medical + Medication log · M4 Attendance (health screening + pickup log + substitute assignment + Mark-All-Present default) · M5 Fee Management (installment plans + UPI receipts) · M6 Communication Hub + daily photo sharing · M18 Classroom & Teacher Management | ₹12L (100 buyers) |
+| **Phase 3 — Full Suite** | Weeks 11–18 | M7 PTM Manager · M9 Staff Management · M10 Curriculum (Quick Observation default) · M11 Calendar GUI + Birthday Management · M12 Transport · M13 Safety & POCSO · M15 Parent Handbook PDF · M19 ECA Revenue Engine | ₹22L (200 buyers) |
+| **Phase 4 — Intelligence** | Weeks 19–24 | M14 Reports Dashboard · M16 CPD Log · M17 n8n + GoHighLevel automations + 8 pre-built workflows · Multi-branch Enterprise tier · Birthday social media automation trigger | ₹34L (250+ buyers) |
+| **Phase 5 — V2 Platform** | Months 7–12 | React + Supabase rebuild · PWA mobile install · Android app (React Native) · SEA market entry (Thailand, Malaysia, UAE) | ₹60L+ (400+ buyers) |
+
+---
+
+## 9. Data Protection, Integrity & Backup
+
+### 9.1 Five-Layer Protection Model
+
+| Layer | Implementation |
+|-------|---------------|
+| **Layer 1: Sheet protection** | Every tab protected via `sheet.protect().setPassword('generated-secret')`. Users editing directly see: "This range is protected." AppScript bypasses via service account internally. End users cannot bypass. |
+| **Layer 2: DAL wall** | All reads and writes through typed AppScript DAL functions. No module calls `sheet.getRange().setValue()` directly. The GUI never touches the Sheet. |
+| **Layer 3: Input validation** | Before every write: required fields present · text max length · valid date format (DD/MM/YYYY) · numeric in valid range · FK references exist. Invalid data rejected with clear GUI error message. |
+| **Layer 4: Soft deletes only** | `deleteRecord()` sets `deleted=TRUE + deleted_at` and moves JSON snapshot to `_deleted` tab. Owner restores from Settings → Deleted Records in 30 seconds. Never calls `sheet.deleteRow()`. |
+| **Layer 5: Audit log** | Every write appends to `_audit_log`: timestamp · user_role · action · table · row_id · field_changed · old_value · new_value. Append-only — existing rows cannot be edited even by AppScript. |
+### 9.2 Three-Copy Backup System (3-2-1 Rule)
+
+| Copy | Schedule | Storage | Retention | Recovery Time |
+|------|----------|---------|-----------|---------------|
+| **Copy 1 — Daily** | 2:00 AM IST every night | Same Google Drive account — "EduManager Backups" folder | Last 30 copies | 2 minutes |
+| **Copy 2 — Weekly** | Sunday 3:00 AM IST | Separate MNTTA backup Google Drive account (independent of school account) | Last 12 weekly exports per school | 15–30 minutes |
+| **Copy 3 — Monthly** | 1st of month, 8:00 AM IST | Owner's phone via WhatsApp (monthly summary PDF) | Permanent (owner's device) | Summary data only |
+
+**Copy 1 implementation:**
+```javascript
+function dailyBackup() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const date = Utilities.formatDate(new Date(), 'Asia/Kolkata', 'yyyy-MM-dd');
+  const backupFolder = DriveApp.getFoldersByName('EduManager Backups').next();
+  DriveApp.getFileById(ss.getId()).makeCopy(`school_backup_${date}`, backupFolder);
+  // Delete backups older than 30 days
+  cleanOldBackups(backupFolder, 30);
+  // Log backup
+  logBackup('daily', 'success');
+  // Send WhatsApp confirmation to owner via n8n
+  notifyOwnerBackupComplete(date);
+}
+```
+
+**Backup health check:** After each backup: verify file created · file size reasonable · row counts consistent with previous backup. If any check fails → WhatsApp alert to owner AND MNTTA support.
+
+**Owner WhatsApp confirmation (auto-sent 2:05 AM IST):**  
+`"EduManager Pro backup complete for [School Name] — [date] 2:00 AM. [N] student records, [N] fee records. Backup ID: [ID]. All data safe. ✅ — EduManager Pro"`
+
+### 9.3 Recovery Scenarios
+
+| Incident | Severity | AppScript Defence | Recovery Method |
+|----------|----------|------------------|----------------|
+| Accidental cell edit | Low | Sheet protection blocks edit entirely | No action needed — protection worked |
+| Row sort scrambles data | Medium | Row IDs (not row numbers) keep all relationships intact | File → Version History → Restore. Takes 60 seconds. |
+| Student/staff record deleted | High | Soft delete — JSON snapshot in `_deleted` tab | Settings → Deleted Records → Restore. 30 seconds, zero data loss. |
+| Entire Sheet tab deleted | Critical | Tab hidden from tab bar — owner doesn't know it exists | Edit → Undo (if immediate) or Version History restore or Copy 1 backup |
+| Google account hacked/locked | Critical | Copy 2 (weekly CSV) in MNTTA backup account is untouched | MNTTA imports CSV to new account. Max data loss: 1 week |
+| Formula/named range corruption | Medium | AppScript nightly health check validates all named ranges | AppScript auto-repairs from `_config` master list. WhatsApp alert sent. |
+
+---
+
+## 10. Licence Delivery & Pricing Tiers
+
+### 10.1 One Webapp, Three Service Levels
+
+**All three pricing tiers get the same webapp with all 19 modules.**  
+Differences are in support and setup services, NOT in software features.
+
+The app reads `plan_tier` from `_licence` tab at startup and shows:
+- Appropriate support contact (email for Early Bird, WhatsApp for Standard and Pro)
+- Onboarding call booking link (Standard and Pro only)
+- GHL/n8n setup status (Pro only)
+
+### 10.2 My Plan Screen (in Settings)
+
+```
+Current plan: [Standard]
+Purchased: 15 March 2026
+Licence: permanent — no renewal ever
+
+WHAT'S INCLUDED:
+✅ All 19 modules — full access
+✅ Lifetime access — never expires  
+✅ WhatsApp support (24-hour response)
+✅ 1 onboarding call — [Scheduled / Completed]
+
+SUPPORT:
+WhatsApp: [MNTTA support number]
+
+UPGRADE TO PRO:
+Get GoHighLevel CRM configured + n8n automation 
++ MNTTA expert setup session
+Upgrade fee: ₹10,000 (₹24,990 – ₹14,990)
+[UPGRADE NOW →]
+```
+
+### 10.3 Licence Delivery Flow (When School Purchases)
+
+1. MNTTA receives payment confirmation
+2. MNTTA creates Google Sheet workbook from master template
+3. Set `plan_tier` in `_licence` tab: `early_bird` or `standard` or `pro`
+4. Set `school_type` in `_config`: `Montessori` or `KG`
+5. Deploy AppScript Web App and note the URL
+6. Send WhatsApp to school owner with: unique web app URL + onboarding video link + WhatsApp support number
+7. For Pro tier: schedule 3-hour setup session within 48 hours of purchase
+
+---
+
